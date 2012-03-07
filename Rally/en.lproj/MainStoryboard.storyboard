@@ -319,7 +319,7 @@
                                     <segue destination="dWZ-JZ-2wW" kind="modal" identifier="addCommentSegue" modalTransitionStyle="flipHorizontal" id="U5j-fl-RBI"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="UoU-aJ-1Xf">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="UoU-aJ-1Xf">
                                 <rect key="frame" x="6" y="141" width="153" height="191"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1557,11 +1557,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="WIE-aG-si2"/>
         <segue reference="9UD-zp-lBC"/>
+        <segue reference="WIE-aG-si2"/>
         <segue reference="QGg-Zm-D5P"/>
         <segue reference="RzE-ON-JCY"/>
+        <segue reference="U5j-fl-RBI"/>
         <segue reference="ua3-DB-SCh"/>
-        <segue reference="q9D-bN-WzB"/>
     </inferredMetricsTieBreakers>
 </document>
