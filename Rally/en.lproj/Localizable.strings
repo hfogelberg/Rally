@@ -1,0 +1,41 @@
+/* 
+  Localizable.strings
+  Rally
+
+  Created by Henrik Fogelberg on 2012-03-06.
+  Copyright (c) 2012 Itio Systems AB. All rights reserved.
+*/
+
+"ADD_DOG" = "Add dog";
+"ADD_DOG_TEXT" = "Before creating a result, you must enter information about your dog.";
+"ADD_RESULT" = "Add Result";
+"BREED" = "Breed";
+"COMPETITION" = "Event";
+"DOB" = "Date of birth";
+"DATE" = "Date";
+"DOGS" = "Dogs";
+"DROP_DOG" = "Do you really want to delet the dog?";
+"DROP_DOG_HEADER" = "Delete dog";
+"DROP_DOG_RESULTS" = "Do you really want to delete the dog? The rally-o results will also be removed";
+"DROP _RESULT_HEADER" = "Delet results";
+"DROP_RESULT" = "Do you really want to delete the result?";
+"FEMALE" = "Female";
+"HEIGHT" = "Height";
+"LEVEL" = "Level";
+"LOCATION" = "Location";
+"MALE" = "Male";
+"MISSED_NAME" = "You forgot to enter the dog's name!";
+"NAME" = "Name";
+"NO" = "No";
+"NAME_USED" = "There's already a dog with that name!";
+"ORGANISATION" = "Organization";
+"PLACE" = "Position";
+"POINTS" = "Points";
+"RANDOM_SIGN" = "Flash cards"; 
+"RESULT" = "Result";
+"RESULTS" = "Results";
+"SETTINGS" = "Settings";
+"SETTINGS_MESSAGE" = "Choose organization and level in Settings";
+"SIGNS" = "Signs";
+"TRAINING" = "Training";
+"YES" = "Yes";
