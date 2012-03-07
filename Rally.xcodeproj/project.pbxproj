@@ -230,8 +230,8 @@
 		5772F76B1506306000CF2FCA /* toolpen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = toolpen.png; path = Icons/toolpen.png; sourceTree = "<group>"; };
 		5772F76D150632A800CF2FCA /* can.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = can.png; path = Icons/can.png; sourceTree = "<group>"; };
 		5772F76F1506372000CF2FCA /* toolnote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = toolnote.png; path = Icons/toolnote.png; sourceTree = "<group>"; };
-		5772F77115063D4300CF2FCA /* application_icon_highres.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = application_icon_highres.png; sourceTree = "<group>"; };
-		5772F77315063D4E00CF2FCA /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		5772F77115063D4300CF2FCA /* application_icon_highres.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = application_icon_highres.png; path = ../application_icon_highres.png; sourceTree = "<group>"; };
+		5772F77315063D4E00CF2FCA /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		5772F77515063F9C00CF2FCA /* next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = next.png; path = Icons/next.png; sourceTree = "<group>"; };
 		5772F77615063F9C00CF2FCA /* questionmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = questionmark.png; path = Icons/questionmark.png; sourceTree = "<group>"; };
 		5772F78A15064C4100CF2FCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -473,12 +473,18 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		57AF15351507A343008E9B27 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				57B2783B14E93A7F006FA5E4 /* ITIAppDelegate.h */,
+				57B2783C14E93A7F006FA5E4 /* ITIAppDelegate.m */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
 		57B277D114E92EA4006FA5E4 = {
 			isa = PBXGroup;
 			children = (
-				5772F77315063D4E00CF2FCA /* Default@2x.png */,
-				5772F77115063D4300CF2FCA /* application_icon_highres.png */,
-				57B2784114E93AEA006FA5E4 /* libsqlite3.dylib */,
 				57B277E614E92EA4006FA5E4 /* Rally */,
 				57B277DF14E92EA4006FA5E4 /* Frameworks */,
 				57B277DD14E92EA4006FA5E4 /* Products */,
@@ -506,13 +512,12 @@
 		57B277E614E92EA4006FA5E4 /* Rally */ = {
 			isa = PBXGroup;
 			children = (
+				57AF15351507A343008E9B27 /* App */,
 				57F58F831504EB430009EB29 /* MainStoryboard.storyboard */,
 				5772F75C1504F68E00CF2FCA /* Images */,
 				57F58E451500E3680009EB29 /* App img */,
 				57B2785214E93B4C006FA5E4 /* Signs */,
 				57B2784314E93B17006FA5E4 /* Icons */,
-				57B2783B14E93A7F006FA5E4 /* ITIAppDelegate.h */,
-				57B2783C14E93A7F006FA5E4 /* ITIAppDelegate.m */,
 				57B277FF14E9388F006FA5E4 /* Controller */,
 				57B277FD14E9386C006FA5E4 /* Model */,
 				57B277E714E92EA4006FA5E4 /* Supporting Files */,
@@ -523,6 +528,7 @@
 		57B277E714E92EA4006FA5E4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				57B2784114E93AEA006FA5E4 /* libsqlite3.dylib */,
 				57B277E814E92EA4006FA5E4 /* Rally-Info.plist */,
 				57B277E914E92EA4006FA5E4 /* InfoPlist.strings */,
 				57B277EC14E92EA4006FA5E4 /* main.m */,
@@ -793,6 +799,8 @@
 		57F58E451500E3680009EB29 /* App img */ = {
 			isa = PBXGroup;
 			children = (
+				5772F77315063D4E00CF2FCA /* Default@2x.png */,
+				5772F77115063D4300CF2FCA /* application_icon_highres.png */,
 				57B2797F14EA75C5006FA5E4 /* Default.png */,
 				57B2797D14EA758D006FA5E4 /* application_icon.png */,
 				57B2783714E93A50006FA5E4 /* rally_logga1.png */,
