@@ -127,12 +127,23 @@
 }
 */
 
+- (void)viewDidAppear:(BOOL)animated{
+    ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
+    if([dataSource resultHasComment:result.id] ==YES){
+        addCommentButton.hidden = TRUE;
+        editCommentButton.hidden = FALSE;
+    }else{
+        addCommentButton.hidden = FALSE;
+        editCommentButton.hidden = TRUE;
+    }
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    dogText.placeholder = NSLocalizedString(@"DOG", nil);
+    dogText.placeholder = NSLocalizedString(@"NAME", nil);
     eventDate.placeholder = NSLocalizedString(@"DATE", nil);
     placeText.placeholder = NSLocalizedString(@"LOCATION", nil);
     pointsText.placeholder = NSLocalizedString(@"RESULT", nil);
@@ -144,8 +155,6 @@
     [self getLevels];
     [self getDogs];
     
-    NSString *trimmedComment = [result.comment stringByTrimmingCharactersInSet:
-                               [NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSString *trimmedPlace = [result.place stringByTrimmingCharactersInSet:
                                 [NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
@@ -171,16 +180,6 @@
     placeText.delegate = self;
     pointsText.delegate = self;
     positionText.delegate = self;
-    
-    if([trimmedComment length]==0){
-        addCommentButton.hidden = FALSE;
-        addCommentButton.layer.zPosition = 1;
-        editCommentButton.hidden = TRUE;
-    }else{
-        addCommentButton.hidden = TRUE;
-        editCommentButton.hidden = FALSE;
-        editCommentButton.layer.zPosition = 1;
-    }
     
     [[self.levelsTable layer] setBorderColor:[[UIColor grayColor] CGColor]];
     [[self.levelsTable layer] setBorderWidth:2.3];
@@ -221,7 +220,7 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     
-    if(title==@"Ja"){
+    if(title==NSLocalizedString(@"YES", nil)){
         ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
         [dataSource deleteResult:result.id];
         [self.navigationController popViewControllerAnimated:YES];

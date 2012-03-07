@@ -415,6 +415,39 @@
 }
 
 // Dog
+- (BOOL)dogHasComment:(int)dogId{
+    BOOL hasComment = NO;
+    @try{
+        
+        [self connectToDb];
+        const char *dbpath = [databasePath UTF8String];
+        if (sqlite3_open(dbpath, &rallyDb) == SQLITE_OK){
+            NSString *selectSql = [NSString stringWithFormat:@"SELECT comment FROM Dogs WHERE id = %d", dogId];
+            const char *sql = [selectSql UTF8String];
+            sqlite3_stmt *sqlStatement;
+            if(sqlite3_prepare(rallyDb, sql, -1, &sqlStatement, NULL) != SQLITE_OK){
+                NSLog(@"Problem with prepare statement");
+            }     
+            
+            while (sqlite3_step(sqlStatement)==SQLITE_ROW) {
+                NSString *comment = [[NSString alloc] initWithUTF8String:(const char *)sqlite3_column_text(sqlStatement, 0)];
+                NSString *trimmedComment = [comment stringByTrimmingCharactersInSet:
+                                            [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                if([trimmedComment length]>0) 
+                    hasComment = YES;
+            }
+        }else{
+            NSLog(@"Cannot locate database file '%@'.", databasePath);
+        }
+    }
+    @catch (NSException *exception) {
+        NSLog(@"An exception occured: %@", [exception reason]);
+    }
+    @finally {
+        return hasComment;
+    }    
+}
+
 - (void)addDogComment:(ITIDog *)dog{
     NSString *updateSql = [NSString stringWithFormat:@"UPDATE Dogs SET comment = \"%@\" WHERE id=%d", dog.comment, dog.id];
     [self update:updateSql];
@@ -520,6 +553,40 @@
 -(void)deleteResultsForDog:(int)dogId{
     NSString *deleteSql = [NSString stringWithFormat:@"DELETE FROM Results WHERE dog_id = %d", dogId];
     [self delete:deleteSql];
+}
+
+- (BOOL)resultHasComment:(int)resultId{
+    BOOL hasComment = NO;
+    @try{
+        
+        [self connectToDb];
+        const char *dbpath = [databasePath UTF8String];
+        if (sqlite3_open(dbpath, &rallyDb) == SQLITE_OK){
+            NSString *selectSQL  = [NSString stringWithFormat:@"SELECT comment FROM Results WHERE id = %d", resultId];
+            const char *sql = [selectSQL UTF8String];
+            sqlite3_stmt *sqlStatement;
+            if(sqlite3_prepare(rallyDb, sql, -1, &sqlStatement, NULL) != SQLITE_OK){
+                NSLog(@"Problem with prepare statement");
+            }     
+            
+            while (sqlite3_step(sqlStatement)==SQLITE_ROW) {
+                NSString *comment = [[NSString alloc] initWithUTF8String:(const char *)sqlite3_column_text(sqlStatement, 0)];
+                NSString *trimmedComment = [comment stringByTrimmingCharactersInSet:
+                                            [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                if([trimmedComment length]>0) 
+                    hasComment = YES;
+            }
+        }else{
+            NSLog(@"Cannot locate database file '%@'.", databasePath);
+        }
+    }
+    @catch (NSException *exception) {
+        NSLog(@"An exception occured: %@", [exception reason]);
+    }
+    @finally {
+        return hasComment;
+    }    
+
 }
 
 - (NSMutableArray *)searchResults:(NSString *)dogName :(NSString *)city{

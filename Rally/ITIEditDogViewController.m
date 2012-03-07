@@ -85,18 +85,26 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)viewDidAppear:(BOOL)animated{ 
+    ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
+    if([dataSource dogHasComment:dog.id]==YES){
+        editComment.hidden = FALSE;
+        addComment.hidden = TRUE;
+    }else{
+        addComment.hidden = FALSE;
+        editComment.hidden = TRUE;
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
-    self.view.backgroundColor = background;
-    
+    self.view.backgroundColor = background;    
     self.navigationItem.title = self.dog.name;
     
     NSString *trimmedBreed = [dog.breed stringByTrimmingCharactersInSet:
-                               [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    NSString *trimmedComment = [dog.comment stringByTrimmingCharactersInSet:
                                [NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     if([trimmedBreed length]>0)
@@ -122,17 +130,6 @@
     else
         resultsButton.hidden = FALSE;
     
-
-    if([trimmedComment length]==0){
-        addComment.hidden = FALSE;
-        addComment.layer.zPosition = 1;
-        editComment.hidden = TRUE;
-    }else{
-        addComment.hidden = TRUE;
-        editComment.hidden = FALSE;
-        editComment.layer.zPosition = 1;
-    }
-    
     [self hideKeyboards];
 }
 
@@ -145,19 +142,18 @@
     else
        messageText = [[NSMutableString alloc] initWithString:NSLocalizedString(@"DROP_DOG", nil)];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"DROP_DOG_HEADER", nil)
-                                                    message:messageText 
-                                                   delegate:self 
-                                          cancelButtonTitle:NSLocalizedString(@"NO", nil)
-                                          otherButtonTitles:NSLocalizedString(@"YES", nil)];
-    
-    [alert show];
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"DROP_DOG_HEADER", nil)
+                                                      message:messageText
+                                                     delegate:self
+                                            cancelButtonTitle:NSLocalizedString(@"NO", nil)
+                                            otherButtonTitles:NSLocalizedString(@"YES", nil), nil];
+    [message show];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     
-    if(title==@"Ja")
+    if(title==NSLocalizedString(@"YES", nil))
     {
         ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
         [dataSource deleteDog:dog.id];

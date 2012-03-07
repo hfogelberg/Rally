@@ -16,8 +16,8 @@
 "DOGS" = "Dogs";
 "DROP_DOG" = "Do you really want to delet the dog?";
 "DROP_DOG_HEADER" = "Delete dog";
-"DROP_DOG_RESULTS" = "Do you really want to delete the dog? The rally-o results will also be removed";
-"DROP _RESULT_HEADER" = "Delet results";
+"DROP_DOG_RESULTS" = "Do you really want to delete the dog? The Rally-O results will also be removed.";
+"DROP_RESULT_HEADER" = "Delete results";
 "DROP_RESULT" = "Do you really want to delete the result?";
 "FEMALE" = "Female";
 "HEIGHT" = "Height";

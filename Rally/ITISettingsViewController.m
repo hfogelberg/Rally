@@ -58,6 +58,9 @@
     self.view.backgroundColor = background;
     orgField.delegate = self;
     levelField.delegate = self;
+    
+    organisationLabel.text = NSLocalizedString(@"ORGANISATION", nil);
+    levelLabel.text = NSLocalizedString(@"LEVEL", nil);
 }
 
 - (void)viewDidAppear:(BOOL)animated{

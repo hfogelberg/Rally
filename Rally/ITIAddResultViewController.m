@@ -197,7 +197,7 @@
 {
     [super viewDidLoad];
     
-    dogText.placeholder = NSLocalizedString(@"DOG", nil);
+    dogText.placeholder = NSLocalizedString(@"NAME", nil);
     eventDate.placeholder = NSLocalizedString(@"DATE", nil);
     placeText.placeholder = NSLocalizedString(@"LOCATION", nil);
     pointsText.placeholder = NSLocalizedString(@"POINTS", nil);
@@ -250,7 +250,6 @@
      int numDogs = [self.dogs count];
     
      if (numDogs == 0){
-         dogPicker.hidden = TRUE;
          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ADD_DOG", nil)
                                                          message:NSLocalizedString(@"ADD_DOG_TEXT", nil) 
                                                         delegate:nil 
@@ -263,14 +262,13 @@
          result.dog_id = dog.id;
          result.dog_name = dog.name;
          self.dogText.text = result.dog_name;
-         dogPicker.hidden = TRUE;
-     }else{
-         ITIDog *dog = [self.dogs objectAtIndex:0];
-         result.dog_id = dog.id;
-         result.dog_name = dog.name;
-         self.dogText.text = dog.name;
-         dogPicker.hidden = FALSE;
      }
+//         else{
+//         ITIDog *dog = [self.dogs objectAtIndex:0];
+//         result.dog_id = dog.id;
+//         result.dog_name = dog.name;
+//         self.dogText.text = dog.name;
+//     }
     dataSource = Nil;
 }
 
