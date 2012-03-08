@@ -12,6 +12,7 @@
 @synthesize imageView;
 @synthesize sign;
 
+// Move to the next sign when Next is tapped
 - (void) getNext:(id)sender{
     [self displaySign];
 }
@@ -33,15 +34,7 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
-
+// Set the tab bar depending on language
 - (void)awakeFromNib{
     self.title = NSLocalizedString(@"RANDOM_SIGN", nil);
 }
@@ -51,8 +44,7 @@
     [super viewDidLoad];
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
     self.view.backgroundColor = background;
-    
-//    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Åter" style:UIBarButtonItemStylePlain target:nil action:nil];
+
     [self displaySign];
 }
 

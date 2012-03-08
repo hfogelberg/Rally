@@ -53,7 +53,6 @@
     orgs = [dataSource getOrganisations];
 }
 
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];

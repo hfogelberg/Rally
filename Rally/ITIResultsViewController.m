@@ -31,7 +31,7 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
+// Set tab bar depending on localization
 - (void)awakeFromNib{
     self.title = NSLocalizedString(@"RESULTS", nil);
 }
@@ -46,8 +46,6 @@
     resultsTable.backgroundView = bgView;  
     
     searchResults.delegate = self;
-    
-//    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Åter" style:UIBarButtonItemStylePlain target:nil action:nil];
 }
 
 - (void) populateDataSource{
@@ -68,6 +66,7 @@
     self.resultsTable = Nil;
 }
 
+// Refresh the table when a new result has been added
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -97,8 +96,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma mark - Table view data source
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -123,7 +120,7 @@
     NSString *place = result.place;
     NSString *event_date = result.event_date;
     
-    NSString *label = [NSString stringWithFormat:@"%@ %@ %@", dog, place, event_date];
+    NSString *label = [NSString stringWithFormat:@"%@ %@ %@", event_date, dog, place ];
     cell.textLabel.text = label;
     
     return cell;

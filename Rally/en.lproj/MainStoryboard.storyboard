@@ -254,7 +254,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Poäng" minimumFontSize="17" id="2n5-0t-p1r">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="2n5-0t-p1r">
                                 <rect key="frame" x="167" y="163" width="67" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -298,13 +298,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <action selector="changeDogName:" destination="cwe-Lw-Ppp" eventType="touchUpInside" id="aIk-wJ-TPM"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="f8o-ZL-uyv">
-                                <rect key="frame" x="197" y="215" width="80" height="80"/>
+                                <rect key="frame" x="205" y="211" width="60" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -339,25 +339,27 @@
                                     <outlet property="delegate" destination="cwe-Lw-Ppp" id="sEC-mN-yeL"/>
                                 </connections>
                             </tableView>
-                            <pickerView contentMode="scaleToFill" id="jEH-ZM-ukG">
-                                <rect key="frame" x="0.0" y="51" width="320" height="216"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Sw1-Am-iy2">
+                                <rect key="frame" x="205" y="221" width="60" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" backgroundImage="paper.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" id="LEv-z8-13Y">
+                                <rect key="frame" x="0.0" y="124" width="320" height="216"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="cwe-Lw-Ppp" id="2Bm-lR-4QB"/>
-                                    <outlet property="delegate" destination="cwe-Lw-Ppp" id="IaU-zX-eFr"/>
-                                </connections>
-                            </pickerView>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="wjf-Im-1nv">
-                                <rect key="frame" x="0.0" y="127" width="320" height="216"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <date key="date" timeIntervalSinceReferenceDate="352045417.11052901">
-                                    <!--2012-02-27 14:23:37 +0000-->
+                                <date key="date" timeIntervalSinceReferenceDate="352917162.25916803">
+                                    <!--2012-03-08 16:32:42 +0000-->
                                 </date>
-                                <locale key="locale" localeIdentifier="sv_SE"/>
+                                <locale key="locale" localeIdentifier="en_US"/>
                                 <timeZone key="timeZone" name="America/Los_Angeles">
-                                    <data key="data">
+                                    <mutableData key="data">
 VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
 y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
 5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
@@ -375,16 +377,18 @@ f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
-</data>
+</mutableData>
                                 </timeZone>
-                                <connections>
-                                    <action selector="dateChanged:" destination="cwe-Lw-Ppp" eventType="valueChanged" id="NTZ-IO-Fy0"/>
-                                </connections>
                             </datePicker>
+                            <pickerView contentMode="scaleToFill" id="rkp-cK-9Kh">
+                                <rect key="frame" x="0.0" y="51" width="320" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <connections>
                             <action selector="backgroundTouched:" destination="cwe-Lw-Ppp" eventType="touchDown" id="YaW-Wg-R3R"/>
+                            <action selector="dateChanged:" destination="cwe-Lw-Ppp" eventType="valueChanged" id="tEv-Nn-GZa"/>
                         </connections>
                     </view>
                     <toolbarItems/>
@@ -397,12 +401,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="dogPicker" destination="jEH-ZM-ukG" id="7am-0H-QIk"/>
                         <outlet property="dogText" destination="hIt-an-eHy" id="clE-bz-g90"/>
+                        <outlet property="editCommentButton" destination="Sw1-Am-iy2" id="nVA-Lc-r8O"/>
                         <outlet property="eventDate" destination="VLX-A8-199" id="Cvx-sx-cPl"/>
                         <outlet property="isCompetitioSeg" destination="KdL-TY-cY8" id="7ul-5v-Idb"/>
                         <outlet property="levelTable" destination="UoU-aJ-1Xf" id="Riw-LL-age"/>
-                        <outlet property="pickDate" destination="wjf-Im-1nv" id="jvs-HZ-0Ap"/>
+                        <outlet property="pickDate" destination="LEv-z8-13Y" id="52W-ws-ZLz"/>
                         <outlet property="placeText" destination="bu0-jd-EC3" id="930-2d-Xu6"/>
                         <outlet property="pointsText" destination="2n5-0t-p1r" id="nC9-K5-jPc"/>
                         <outlet property="positionText" destination="c5y-Ao-Tng" id="CEV-fV-Bn6"/>
@@ -434,7 +438,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <action selector="backgroundTouched:" destination="ORr-kI-t8p" eventType="touchUpInside" id="5Qa-sN-q15"/>
                                 </connections>
@@ -453,7 +457,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <action selector="backgroundTouched:" destination="ORr-kI-t8p" eventType="touchUpOutside" id="seD-kz-47P"/>
                                 </connections>
@@ -463,7 +467,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
                                     <action selector="backgroundTouched:" destination="ORr-kI-t8p" eventType="touchUpOutside" id="0OQ-IM-jsx"/>
                                 </connections>
@@ -732,6 +736,9 @@ AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
 </data>
                                 </timeZone>
+                                <connections>
+                                    <action selector="dateChanged:" destination="5k5-CO-6cw" eventType="valueChanged" id="1KN-fs-mm7"/>
+                                </connections>
                             </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -1389,6 +1396,171 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="pen.png" width="60" height="70"/>
         <image name="questionmark.png" width="70" height="40"/>
     </resources>
+    <classes>
+        <class className="ITIAddDogViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIAddDogViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTouched:"/>
+                <relationship kind="action" name="dateChanged:"/>
+                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="save:"/>
+                <relationship kind="outlet" name="breedText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="dobPicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="dobText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="editComment" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="heightText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="nameText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="sexSegm" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="writeComment" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="ITIAddResultViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIAddResultViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTouched:"/>
+                <relationship kind="action" name="changeDogName:"/>
+                <relationship kind="action" name="dateChanged:"/>
+                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="addCommentButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="dogPicker" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="dogText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="editCommentButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="eventDate" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="isCompetitioSeg" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="levelTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="pickDate" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="placeText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="pointsText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="positionText" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ITIDogCommentViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIDogCommentViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="save:"/>
+                <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="commentText" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="ITIDogsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIDogsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dogsView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ITIEditDogViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIEditDogViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTouched:"/>
+                <relationship kind="action" name="dateChanged:"/>
+                <relationship kind="action" name="deleteDog:"/>
+                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="addComment" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="breedText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="dobPicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="dobText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="editComment" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="heightText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="resultsButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="save" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="sexSegm" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="ITIEditResultViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIEditResultViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTouched:"/>
+                <relationship kind="action" name="dateChanged:"/>
+                <relationship kind="action" name="deleteResult:"/>
+                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="addCommentButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="dogText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="editCommentButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="eventDate" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="isCompetitioSeg" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="levelsTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="pickDate" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="pickDog" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="placeText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="pointsText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="positionText" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ITILevelSettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITILevelSettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="outlet" name="levelPicker" candidateClass="UIPickerView"/>
+            </relationships>
+        </class>
+        <class className="ITIOrgSettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIOrgSettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="outlet" name="orgPicker" candidateClass="UIPickerView"/>
+            </relationships>
+        </class>
+        <class className="ITIRandomSignDetailController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIRandomSignDetailController.h"/>
+            <relationships>
+                <relationship kind="action" name="displaySign"/>
+                <relationship kind="action" name="getNext:"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="ITIResultsCommentViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIResultsCommentViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="save:"/>
+                <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="commentText" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="ITIResultsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIResultsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="resultsTable" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ITISettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITISettingsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="levelField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="levelLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="orgField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="organisationLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ITISignCommentViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITISignCommentViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="closeDialog:"/>
+                <relationship kind="action" name="deleteComment:"/>
+                <relationship kind="action" name="saveComment:"/>
+                <relationship kind="outlet" name="commentText" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ITISignDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITISignDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="commentButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="descriptionText" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="ITISignsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITISignsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="signsTable" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
@@ -1398,8 +1570,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <segue reference="9UD-zp-lBC"/>
         <segue reference="vFY-zg-FSk"/>
         <segue reference="QGg-Zm-D5P"/>
+        <segue reference="U5j-fl-RBI"/>
         <segue reference="RzE-ON-JCY"/>
-        <segue reference="q9D-bN-WzB"/>
         <segue reference="WIE-aG-si2"/>
     </inferredMetricsTieBreakers>
 </document>

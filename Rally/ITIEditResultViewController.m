@@ -47,7 +47,6 @@
     [self hideKeyboards];
 }
 
-
 - (void) hideKeyboards{
     [placeText resignFirstResponder];
     [dogText resignFirstResponder];
@@ -118,15 +117,7 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
-
+// Make sure the correct comment icon is displayed
 - (void)viewDidAppear:(BOOL)animated{
     ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
     if([dataSource resultHasComment:result.id] ==YES){
@@ -155,6 +146,8 @@
     [self getLevels];
     [self getDogs];
     
+
+    // Trime the string so the paceholder will be displayed if there isn't a proper name.
     NSString *trimmedPlace = [result.place stringByTrimmingCharactersInSet:
                                 [NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
@@ -175,11 +168,28 @@
     NSString *title =  [NSString stringWithFormat:@"%@ %@ %@", self.result.dog_name, self.result.place, self.result.event_date];
     self.navigationItem.title = title; 
     
-    dogText.delegate = self;
-    eventDate.delegate = self;
-    placeText.delegate = self;
-    pointsText.delegate = self;
-    positionText.delegate = self;
+    [self.dogText setDelegate:self];
+    [self.dogText addTarget:self
+                        action:@selector(backgroundTouched:)
+              forControlEvents:UIControlEventEditingDidEndOnExit];
+    
+    [self.eventDate setDelegate:self];
+    
+    [self.placeText setDelegate:self];
+    [self.placeText addTarget:self
+                        action:@selector(backgroundTouched:)
+              forControlEvents:UIControlEventEditingDidEndOnExit];
+    
+    [self.pointsText setDelegate:self];
+    [self.pointsText addTarget:self
+                        action:@selector(backgroundTouched:)
+              forControlEvents:UIControlEventEditingDidEndOnExit];
+    
+    [self.positionText setDelegate:self];
+    [self.positionText addTarget:self
+                        action:@selector(backgroundTouched:)
+              forControlEvents:UIControlEventEditingDidEndOnExit];
+    
     
     [[self.levelsTable layer] setBorderColor:[[UIColor grayColor] CGColor]];
     [[self.levelsTable layer] setBorderWidth:2.3];
@@ -208,6 +218,7 @@
     levels = [dataSource getLevels];
 }
 
+// Display warning if delete is chosen
 - (void)deleteResult:(id)sender{
     UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"DROP_RESULT_HEADER", nil)
                                                       message:NSLocalizedString(@"DROP_RESULT", nil)
@@ -217,6 +228,7 @@
     [message show];
 }
 
+// Delete the result
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     
@@ -227,6 +239,8 @@
     }
 }
 
+// Save to Db.
+// Dismiss date picker instead if it's vissible
 - (void)done:(UIBarButtonItem *)sender{
     
     if(editDate == YES){

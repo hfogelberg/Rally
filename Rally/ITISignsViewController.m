@@ -13,10 +13,6 @@
 @synthesize signs;
 @synthesize signsTable;
 
-- (void) showSearchBar{
-    
-}
-
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -34,8 +30,6 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
-
 - (void)awakeFromNib{
     self.title = NSLocalizedString(@"SIGNS", nil);
 }
@@ -48,6 +42,7 @@
     UIImageView *bgView= [[UIImageView alloc] initWithImage:bgImage];
     signsTable.backgroundView = bgView;  
     
+    // On first run send user to settings
     ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
     ITISettings *settings = [dataSource getSettingsOverview];
     if(settings.isFirstRun == YES)
@@ -79,8 +74,6 @@
     self.navigationItem.title = settings.levelDescription;
     self.signs = [dataSource getSigns];    
     [signsTable reloadData];
-    
-
 }
 
 - (void)viewDidAppear:(BOOL)animated

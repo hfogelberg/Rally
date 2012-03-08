@@ -34,11 +34,13 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+// Make sure the correct comment butt on is displaye
 - (void) viewWillAppear:(BOOL)animated{
     [self displaySign];
     [self getSignComment];
 }
 
+// Display corret button depending on if the sign has a comment or not.
 - (void)getSignComment{
     ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
     signComment = [dataSource getSignComment:sign.id];
@@ -49,8 +51,8 @@
     }
 }
 
+// Set text fields and display image
 - (void)displaySign{
-    
     self.navigationItem.title = self.sign.header;
     self.descriptionText.text = self.sign.body;
     self.imageView.image = self.sign.image;

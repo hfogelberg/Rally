@@ -22,6 +22,8 @@
 @synthesize addComment;
 @synthesize save;
 
+// Save to Db.
+// Dismiss date picker and don't save if the date
 - (void) done:(UIBarButtonItem *)sender{
     
     if(editDate == YES){
@@ -42,6 +44,7 @@
     }
 }
 
+// Display selected date in text field when date is changed
 - (void) dateChanged:(id)sender{
     NSDate *pickerDate = [dobPicker date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -85,6 +88,7 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+// Make sure the correct comment icon is displayed
 - (void)viewDidAppear:(BOOL)animated{ 
     ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
     if([dataSource dogHasComment:dog.id]==YES){
@@ -121,18 +125,28 @@
     heightText.placeholder = NSLocalizedString(@"HEIGHT", nil);
     
     dobPicker.hidden = TRUE;
-    dobText.delegate = self;    
-    heightText.delegate = self;
-    breedText.delegate = self;
-    
+
     if([self dogHasResults]==NO)
         resultsButton.hidden = TRUE;
     else
         resultsButton.hidden = FALSE;
     
+    [self.heightText setDelegate:self];
+    [self.heightText addTarget:self
+                     action:@selector(backgroundTouched:)
+                     forControlEvents:UIControlEventEditingDidEndOnExit];
+
+    [self.breedText setDelegate:self];
+    [self.breedText addTarget:self
+                    action:@selector(backgroundTouched:)
+                    forControlEvents:UIControlEventEditingDidEndOnExit];
+    
+    [self.dobText setDelegate:self];
+    
     [self hideKeyboards];
 }
 
+// Display warning if the user wants to delet the dog
 - (void)deleteDog:(id)sender{
     NSMutableString *messageText;
     
@@ -150,6 +164,7 @@
     [message show];
 }
 
+// Delete the dog
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     

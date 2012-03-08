@@ -8,9 +8,6 @@
 
 #import "ITISettingsViewController.h"
 
-
-
-
 @implementation ITISettingsViewController
 @synthesize levelField;
 @synthesize orgField;
@@ -18,12 +15,11 @@
 @synthesize levelLabel;
 @synthesize organisationLabel;
 
+// Dismiss keyboard. Instead the picker will be displayed
 - (void)textFieldDidBeginEditing:(UITextField *)textField{    
     [orgField resignFirstResponder];
     [levelField resignFirstResponder];
 }
-
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,8 +38,7 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
-
+// Set text in tab bar depending on localization
 - (void)awakeFromNib{
     self.title = NSLocalizedString(@"SETTINGS", nil);
 }
@@ -58,9 +53,6 @@
     self.view.backgroundColor = background;
     orgField.delegate = self;
     levelField.delegate = self;
-    
-    organisationLabel.text = NSLocalizedString(@"ORGANISATION", nil);
-    levelLabel.text = NSLocalizedString(@"LEVEL", nil);
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -78,7 +70,6 @@
     self.levelField=Nil;
     self.orgField=Nil;
     self.settings=Nil;
-
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

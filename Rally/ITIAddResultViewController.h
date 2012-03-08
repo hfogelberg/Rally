@@ -33,7 +33,8 @@
 @property (nonatomic, retain) IBOutlet UITextField *positionText;
 @property (nonatomic, retain) IBOutlet UITableView *levelTable;
 @property (nonatomic, retain) NSMutableArray *levels;
-
+@property (nonatomic, retain) IBOutlet UIButton *addCommentButton;
+@property (nonatomic, retain) IBOutlet UIButton *editCommentButton;
 
 - (IBAction)backgroundTouched:(id)sender;
 - (IBAction)dateChanged:(id)sender;

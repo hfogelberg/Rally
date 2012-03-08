@@ -18,6 +18,4 @@
 @property (nonatomic, retain) NSMutableArray *signs;
 @property (nonatomic, retain) IBOutlet UITableView *signsTable;
 
-- (void) showSearchBar;
-
 @end

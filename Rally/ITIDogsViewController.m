@@ -32,8 +32,7 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
-
+// Set the tabe bar label depending on localization
 - (void)awakeFromNib{
     self.title = NSLocalizedString(@"DOGS", nil);
 }
@@ -45,15 +44,6 @@
     UIImage *bgImage= [UIImage imageNamed:@"background.png"];
     UIImageView *bgView= [[UIImageView alloc] initWithImage:bgImage];
     dogsView.backgroundView = bgView;  
-    
-//    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Åter" style:UIBarButtonItemStylePlain target:nil action:nil];
-
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
@@ -94,8 +84,6 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
-#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

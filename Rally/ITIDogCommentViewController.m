@@ -15,18 +15,21 @@
 @synthesize commentText;
 @synthesize dog;
 
+// Resize the text wiew when editing begins
 - (void)textViewDidBeginEditing:(UITextView *)textView{
-    
-    CGRect r = CGRectMake (5, 55, 310, 180);
+    CGRect r = CGRectMake (5, 55, 310, 360);
     [commentText setFrame: r];
     commentText.layer.zPosition = 1;
-    self.navigationItem.hidesBackButton = TRUE;
+    self.navigationItem.hidesBackButton = FALSE;
+
 }
 
 -(void)cancel:(id)sender{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+// Save comment to Db if we have a dog id.
+// Oterwise save the comment in the app delegate.
 - (void)save:(id)sender{
     
     if(dog.id>0){
@@ -58,29 +61,27 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
     self.view.backgroundColor = background;
     
-    
     ITIAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    
     if(dog){
         commentText.text = dog.comment;
-    }if(delegate.comment){
+    }else if(delegate.comment){
         commentText.text = delegate.comment;
     }
     
-    commentText.delegate = self;
+    [self.commentText setDelegate:self];
     
     // Make a border around the comment text area.
     [[self.commentText layer] setBorderColor:[[UIColor grayColor] CGColor]];
     [[self.commentText layer] setBorderWidth:2.3];
     [[self.commentText layer] setCornerRadius:15];
 }
-
 
 - (void)viewDidUnload
 {

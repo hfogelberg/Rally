@@ -24,7 +24,12 @@
 @synthesize positionText;
 @synthesize levelTable;
 @synthesize levels;
+@synthesize addCommentButton;
+@synthesize editCommentButton;
 
+// Save the result to the database.
+// If the date picker or dog picker dismiss when the user taps save. 
+// In that case don't save.
 - (void)done:(UIBarButtonItem *)sender{
     
     if(editDate == YES){
@@ -68,6 +73,7 @@
     }
 }
 
+// Update the dog name text field when an item is selected in the dog picker.
 - (void)changeDogName:(id)sender{
     
     int numDogs = [self.dogs count];
@@ -97,8 +103,8 @@
     result.event_date = eventDate.text;
 }
 
-// If dog name or event date is tapped prevent keyboard from displaying. Instead display
-// date picker or dog list
+// If dog name or event date is tapped prevent keyboard from displaying. 
+// Instead display or dog picker.
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     BOOL retVal = TRUE;
     [self hideKeyboards];
@@ -151,6 +157,8 @@
     [eventDate resignFirstResponder];
     [pointsText resignFirstResponder];
     [placeText resignFirstResponder];
+    [positionText resignFirstResponder];
+    
     editDate = FALSE;
     self.navigationItem.hidesBackButton = FALSE;
     
@@ -176,19 +184,20 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
-
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-/*- (void)loadView
-{
-}
-*/
-
+// Make sure to refresh the dog picker when a new dog has been added.
 - (void)viewDidAppear:(BOOL)animated{
     [self getDogs];
+    
+    if([result.comment length]>0){
+        self.addCommentButton.hidden = TRUE;
+        self.editCommentButton.hidden = FALSE;
+    }else{
+        self.addCommentButton.hidden = FALSE;
+        self.editCommentButton.hidden = TRUE;
+    }
 }
 
-
+// Set title bar depending on language
 -(void)awakeFromNib{
     self.title = NSLocalizedString(@"ADD_RESULT", nil);
 }
@@ -214,12 +223,6 @@
     
     self.result = [[ITIResult alloc] init];
     
-    dogText.delegate = self;
-    eventDate.delegate = self;
-    placeText.delegate = self;
-    pointsText.delegate = self;
-    positionText.delegate = self;
-    
     NSDate *now = [NSDate date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy"];
@@ -234,6 +237,21 @@
     [[self.levelTable layer] setBorderColor:[[UIColor grayColor] CGColor]];
     [[self.levelTable layer] setBorderWidth:2.3];
     [[self.levelTable layer] setCornerRadius:15];
+    
+    [self.dogText setDelegate:self];
+    [self.dogText addTarget:self
+                        action:@selector(backgroundTouched:)
+              forControlEvents:UIControlEventEditingDidEndOnExit];
+    
+    [self.eventDate setDelegate:self];
+    
+    [self.placeText setDelegate:self];
+    [self.placeText addTarget:self
+                        action:@selector(backgroundTouched:)
+              forControlEvents:UIControlEventEditingDidEndOnExit];
+    
+    [self.pointsText setDelegate:self];
+    [self.positionText setDelegate:self];
     
     [self hideKeyboards];
 }
@@ -263,22 +281,12 @@
          result.dog_name = dog.name;
          self.dogText.text = result.dog_name;
      }
-//         else{
-//         ITIDog *dog = [self.dogs objectAtIndex:0];
-//         result.dog_id = dog.id;
-//         result.dog_name = dog.name;
-//         self.dogText.text = dog.name;
-//     }
     dataSource = Nil;
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    
-    // Make sure there's no old comment still around;
-    ITIAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    delegate.comment = @" ";
 
     self.dogs = Nil;
     self.result = Nil;
@@ -293,6 +301,14 @@
     self.positionText = Nil;
     self.levelTable = Nil;
     self.levels = Nil;
+    self.addCommentButton = Nil;
+    self.editCommentButton = Nil;
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    // Make sure there's no old comment still around;
+    ITIAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    delegate.comment = Nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -347,7 +363,5 @@
     
     return cell;
 }
-
-
 
 @end

@@ -15,19 +15,20 @@
 @synthesize commentText;
 @synthesize result;
 
-
+// Resize text view when editing
 - (void)textViewDidBeginEditing:(UITextView *)textView{
-    
-    CGRect r = CGRectMake (5, 55, 310, 180);
+    CGRect r = CGRectMake (5, 55, 310, 360);
     [commentText setFrame: r];
     commentText.layer.zPosition = 1;
-    self.navigationItem.hidesBackButton = TRUE;
+    self.navigationItem.hidesBackButton = FALSE;
 }
 
 -(void)cancel:(id)sender{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+// If there is a result id update Db.
+// Otherwise save comment in app delegate
 - (void)save:(id)sender{
     
     if(result.id>0){
@@ -66,8 +67,9 @@
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
     self.view.backgroundColor = background;
     
-    commentText.delegate = self;
     commentText.text = result.comment;
+    
+    [self.commentText setDelegate:self];
     
     // Make a border around the comment text area.
     [[self.commentText layer] setBorderColor:[[UIColor grayColor] CGColor]];

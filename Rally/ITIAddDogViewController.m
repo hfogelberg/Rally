@@ -75,7 +75,11 @@
     [self dismissModalViewControllerAnimated:YES]; 
 }
 
+// Validate and save
 - (void)saveDog{
+    
+    ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
+    
     if([self.nameText.text length]==0){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"NAME", nil)
                                                         message:NSLocalizedString(@"MISSED_NAME", nil)
@@ -83,8 +87,7 @@
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
-    }else if([self dogNameIsNotUnique] == YES){
-        
+    }else if([dataSource dogNameIsNotUnique:self.nameText.text]== YES){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"NAME", nil)
                                                         message:NSLocalizedString(@"NAME_USED", nil)
                                                        delegate:nil 
@@ -92,12 +95,11 @@
                                               otherButtonTitles:nil];
         [alert show];
     }else{
-        ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
         ITIDog *newDog = [[ITIDog alloc] init];
     
         ITIAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
         newDog.comment = delegate.comment;
-        delegate.comment = @" ";
+        delegate.comment = Nil;
         
         newDog.name = nameText.text;
         newDog.breed = breedText.text;
@@ -114,14 +116,6 @@
 
     [dataSource createDog:newDog];
     }
-}
-
-
-- (BOOL)dogNameIsNotUnique{
-    Boolean ret;
-    ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
-    ret = [dataSource dogNameIsNotUnique:self.nameText.text];
-    return ret;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -141,32 +135,24 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
-
 -(void)awakeFromNib{
     self.title = NSLocalizedString(@"ADD_DOG", nil);
 }
 
+// Make sure that the correct comment icon is displayed
 - (void)viewDidAppear:(BOOL)animated{
+    writeComment.hidden = FALSE;
+    editComment.hidden = TRUE;
+    
     ITIAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    NSString *trimmedComment = [delegate.comment stringByTrimmingCharactersInSet:
+    if(delegate.comment != nil){
+        NSString *trimmedComment = [delegate.comment stringByTrimmingCharactersInSet:
                               [NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
-    if([trimmedComment length]==0){
-        writeComment.hidden = FALSE;
-        writeComment.layer.zPosition = 1;
-        editComment.hidden = TRUE;
-    }else{
-        writeComment.hidden = TRUE;
-        editComment.hidden = FALSE;
-        editComment.layer.zPosition = 1;
+        if([trimmedComment length]>0){
+            writeComment.hidden = TRUE;
+            editComment.hidden = FALSE;
+        }
     }
 }
 
@@ -179,10 +165,6 @@
     self.view.backgroundColor = background;
     
     dobPicker.hidden = TRUE;
-    dobText.delegate = self;
-    nameText.delegate = self;
-    breedText.delegate = self;
-    heightText.delegate = self;
     
     breedText.placeholder = NSLocalizedString(@"BREED", nil);
     dobText.placeholder = NSLocalizedString(@"DOB", nil);
@@ -191,23 +173,38 @@
     
     [sexSegm setTitle:NSLocalizedString(@"FEMALE", nil) forSegmentAtIndex:0];
     [sexSegm setTitle:NSLocalizedString(@"MALE", nil) forSegmentAtIndex:1];
+    
+    [self.dobText setDelegate:self];
+    
+    [self.nameText setDelegate:self];
+    [self.nameText addTarget:self
+                        action:@selector(backgroundTouched:)
+              forControlEvents:UIControlEventEditingDidEndOnExit];
+    
+    [self.breedText setDelegate:self];
+    [self.breedText addTarget:self
+                        action:@selector(backgroundTouched:)
+              forControlEvents:UIControlEventEditingDidEndOnExit];
+    
+    [self.heightText setDelegate:self];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    
-    // Make sure there's no old comment still around;
-    ITIAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    delegate.comment = @" ";
-    
+
     self.nameText = Nil;
     self.breedText = Nil;
     self.sexSegm = Nil;
     self.dobText = Nil;
     self.heightText = Nil;
     self.dobPicker = Nil;
+}
 
+- (void)viewDidDisappear:(BOOL)animated{
+    // Make sure there's no old comment still around;
+    ITIAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    delegate.comment = Nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
