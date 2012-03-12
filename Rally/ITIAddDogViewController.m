@@ -174,19 +174,15 @@
     [sexSegm setTitle:NSLocalizedString(@"FEMALE", nil) forSegmentAtIndex:0];
     [sexSegm setTitle:NSLocalizedString(@"MALE", nil) forSegmentAtIndex:1];
     
-    [self.dobText setDelegate:self];
-    
-    [self.nameText setDelegate:self];
-    [self.nameText addTarget:self
-                        action:@selector(backgroundTouched:)
-              forControlEvents:UIControlEventEditingDidEndOnExit];
-    
-    [self.breedText setDelegate:self];
-    [self.breedText addTarget:self
-                        action:@selector(backgroundTouched:)
-              forControlEvents:UIControlEventEditingDidEndOnExit];
-    
-    [self.heightText setDelegate:self];
+    dobText.delegate = self;
+    nameText.delegate = self;
+    breedText.delegate = self;
+    heightText.delegate = self;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)viewDidUnload

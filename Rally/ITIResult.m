@@ -20,5 +20,7 @@
 @synthesize points;
 @synthesize comment;
 @synthesize position;
+@synthesize club;
+@synthesize event;
 
 @end

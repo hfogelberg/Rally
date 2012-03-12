@@ -132,18 +132,15 @@
         resultsButton.hidden = FALSE;
     
     [self.heightText setDelegate:self];
-    [self.heightText addTarget:self
-                     action:@selector(backgroundTouched:)
-                     forControlEvents:UIControlEventEditingDidEndOnExit];
-
     [self.breedText setDelegate:self];
-    [self.breedText addTarget:self
-                    action:@selector(backgroundTouched:)
-                    forControlEvents:UIControlEventEditingDidEndOnExit];
-    
     [self.dobText setDelegate:self];
     
     [self hideKeyboards];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 // Display warning if the user wants to delet the dog

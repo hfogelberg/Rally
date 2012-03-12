@@ -27,6 +27,8 @@
 @synthesize addCommentButton;
 @synthesize editCommentButton;
 @synthesize dogId;
+@synthesize clubText;
+@synthesize eventText;
 
 // Save the result to the database.
 // If the date picker or dog picker dismiss when the user taps save. 
@@ -61,17 +63,33 @@
     
             result.dog_name = dogText.text;
             result.event_date = dateString;
-            result.place = placeText.text;
+            if([placeText.text isEqual: [NSNull null]])
+                result.place = @" ";
+            else
+                result.place = placeText.text;
             result.points = [points intValue];
             result.position = [position intValue];
             result.event_date = dateString;
             result.is_competition =[isCompetitioSeg selectedSegmentIndex];
+            if([eventText.text isEqual: [NSNull null]])
+                result.event = @" ";
+            else    
+                result.event = eventText.text;
+            if([clubText.text isEqual: [NSNull null]])
+                result.club = @" ";
+            else
+                result.club = clubText.text;
             
             ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
             [dataSource createResult:result];
             [self.navigationController popViewControllerAnimated:YES];
         }
     }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 // Update the dog name text field when an item is selected in the dog picker.
@@ -135,12 +153,32 @@
     }else if (textField == pointsText){
         [placeText resignFirstResponder];
         [pointsText resignFirstResponder];
+        [clubText resignFirstResponder];
+        [eventText resignFirstResponder];
         dogPicker.hidden = TRUE;
         pickDate.hidden = TRUE;
         retVal = TRUE;
     }else if (textField == positionText){
         [placeText resignFirstResponder];
         [pointsText resignFirstResponder];
+        [clubText resignFirstResponder];
+        [eventText resignFirstResponder];
+        dogPicker.hidden = TRUE;
+        pickDate.hidden = TRUE;
+        retVal = TRUE;
+    }else if (textField == eventText){
+        [placeText resignFirstResponder];
+        [pointsText resignFirstResponder];
+        [positionText resignFirstResponder];
+        [clubText resignFirstResponder];
+        dogPicker.hidden = TRUE;
+        pickDate.hidden = TRUE;
+        retVal = TRUE;
+    }else if (textField == clubText){
+        [placeText resignFirstResponder];
+        [pointsText resignFirstResponder];
+        [positionText resignFirstResponder];
+        [eventText resignFirstResponder];
         dogPicker.hidden = TRUE;
         pickDate.hidden = TRUE;
         retVal = TRUE;
@@ -161,6 +199,8 @@
     [pointsText resignFirstResponder];
     [placeText resignFirstResponder];
     [positionText resignFirstResponder];
+    [eventText resignFirstResponder];
+    [clubText resignFirstResponder];
     
     editDate = FALSE;
     self.navigationItem.hidesBackButton = FALSE;
@@ -191,7 +231,8 @@
 - (void)viewDidAppear:(BOOL)animated{
     [self getDogs];
     
-    if([result.comment length]>0){
+    ITIAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    if([delegate.comment length]>0){
         self.addCommentButton.hidden = TRUE;
         self.editCommentButton.hidden = FALSE;
     }else{
@@ -208,9 +249,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    clubText.placeholder = NSLocalizedString(@"CLUB",nil);
     dogText.placeholder = NSLocalizedString(@"NAME", nil);
     eventDate.placeholder = NSLocalizedString(@"DATE", nil);
+    eventText.placeholder = NSLocalizedString(@"EVENT_NAME", nil);
     placeText.placeholder = NSLocalizedString(@"LOCATION", nil);
     pointsText.placeholder = NSLocalizedString(@"POINTS", nil);
     positionText.placeholder = NSLocalizedString(@"PLACE", nil);
@@ -251,6 +293,8 @@
     eventDate.delegate = self;
     placeText.delegate = self;
     dogText.delegate = self;
+    eventText.delegate = self;
+    clubText.delegate = self;
     
     [[self.levelTable layer] setBorderColor:[[UIColor grayColor] CGColor]];
     [[self.levelTable layer] setBorderWidth:2.3];
@@ -313,6 +357,8 @@
     self.levels = Nil;
     self.addCommentButton = Nil;
     self.editCommentButton = Nil;
+    self.eventText = Nil;
+    self.clubText = Nil;
 }
 
 - (void)viewDidDisappear:(BOOL)animated{

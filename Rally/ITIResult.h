@@ -20,5 +20,7 @@
 @property (nonatomic, retain) NSString *comment;
 @property (nonatomic, assign) int points;
 @property (nonatomic, assign) int position;
+@property (nonatomic, retain) NSString *event;
+@property (nonatomic, retain) NSString *club;
 
 @end

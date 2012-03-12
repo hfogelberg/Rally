@@ -98,7 +98,6 @@
         const char *dbpath = [databasePath UTF8String];
         if (sqlite3_open(dbpath, &rallyDb) == SQLITE_OK){
             NSString *sqlQuery = [NSString stringWithFormat:@ "SELECT code FROM Levels, Settings WHERE Levels.organisation = Settings.organisation AND Levels.description LIKE \"%@\"", description];
-            NSLog(sqlQuery);
             const char *sql = [sqlQuery UTF8String];
             sqlite3_stmt *sqlStatement;
             if(sqlite3_prepare(rallyDb, sql, -1, &sqlStatement, NULL) != SQLITE_OK){
@@ -659,7 +658,7 @@
 }
 
 - (void) updateResults: (ITIResult *) changedResult{
-    NSString *updateSQL = [NSString stringWithFormat: @"UPDATE Results SET place = \"%@\", event_date=\"%@\", is_competition=%d, level=%d, comment=\"%@\", result=%d, dog_id=%d, position=%d  WHERE id=%d", changedResult.place, changedResult.event_date, changedResult.is_competition, changedResult.level, changedResult.comment, changedResult.points, changedResult.dog_id, changedResult.position,  changedResult.id]; 
+    NSString *updateSQL = [NSString stringWithFormat: @"UPDATE Results SET place = \"%@\", event_date=\"%@\", is_competition=%d, level=%d, comment=\"%@\", result=%d, dog_id=%d, position=%d event = \"%@\", club = \"%@\" WHERE id=%d", changedResult.place, changedResult.event_date, changedResult.is_competition, changedResult.level, changedResult.comment, changedResult.points, changedResult.dog_id, changedResult.position,  changedResult.id, changedResult.club, changedResult.event]; 
     [self update:updateSQL];
 }
 
@@ -671,7 +670,7 @@
         newResult.comment = @" ";
     }
     
-    NSString *insertSQL = [NSString stringWithFormat: @"INSERT INTO Results(place, event_date, is_competition, level, comment, result, dog_id, position) values(\"%@\", \"%@\", %d, %d, \"%@\", %d, %d, %d)", newResult.place, newResult.event_date, newResult.is_competition, newResult.level, newResult.comment, newResult.points, newResult.dog_id, newResult.position]; 
+    NSString *insertSQL = [NSString stringWithFormat: @"INSERT INTO Results(place, event_date, is_competition, level, comment, result, dog_id, position, club, event) values(\"%@\", \"%@\", %d, %d, \"%@\", %d, %d, %d, \"%@\", \"%@\")", newResult.place, newResult.event_date, newResult.is_competition, newResult.level, newResult.comment, newResult.points, newResult.dog_id, newResult.position, newResult.club, newResult.event]; 
     [self create:insertSQL];
 }
 
@@ -679,17 +678,13 @@
     NSLog(@"Search params %@", searchParams);
     
     NSMutableArray *results = [[NSMutableArray alloc] init];
-    NSMutableArray *accumulatedResults = [[NSMutableArray alloc] init];
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    NSString *queryFrom = [[NSString  alloc] init];
-    NSString *queryParam = [[NSString alloc] init];
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];    NSString *queryParam = [[NSString alloc] init];
     NSString *sql = [[NSString alloc] init];
     NSString *param = [[NSString alloc] init];
     NSArray *params = [searchParams componentsSeparatedByString: @" "];            
     NSLog(@"Number of search params: %d", [params count]);
     
     // 1. First figure out what the various search params are,    
-    queryFrom = @" FROM Results, Dogs ";
     for(int i=0;i<[params count];i++){
         param = [params objectAtIndex:i];
         NSLog(@"Checking search param %@", param);
@@ -752,8 +747,7 @@
             int levelId = [self getLevelCodeForDescription:param];
             if(levelId>0){
                 NSLog(@"Param %d %@ is a level", i, param);
-                queryFrom = [queryFrom stringByAppendingFormat:@", Levels"];
-                queryParam = [queryParam stringByAppendingFormat:@" AND level = %d", levelId];
+                queryParam = [queryParam stringByAppendingFormat:@" AND Results.level = %d", levelId];
             }else{
                 NSLog(@"param %d %@ is not a level", i, param);
             }
@@ -761,9 +755,8 @@
         }
     }
     
-    
     // 2. Perform the actual search
-    NSString *sqlQuery = [NSString stringWithFormat:@"SELECT place, event_date, is_competition, level, Results.comment, result, name, dog_id, Results.id, position %@ %@ %@", queryFrom, @"WHERE Results.dog_id = Dogs.id", queryParam];
+    NSString *sqlQuery = [NSString stringWithFormat:@"SELECT place, event_date, is_competition, level, Results.comment, result, name, dog_id, Results.id, position FROM Results, Dogs WHERE Results.dog_id = Dogs.id %@", queryParam];
     results = [self doResultSearch:sqlQuery];
     
     return results;
@@ -772,7 +765,7 @@
 
 
 - (NSMutableArray *) getResults{
-    NSString *searchSql = @"SELECT place, event_date, is_competition, level, Results.comment, result, name, dog_id, Results.id, position  FROM Results, Dogs WHERE Results.Dog_id = Dogs.id ORDER by event_date DESC";
+    NSString *searchSql = @"SELECT place, event_date, is_competition, level, Results.comment, result, name, dog_id, Results.id, position, club, event FROM Results, Dogs WHERE Results.Dog_id = Dogs.id ORDER by event_date DESC";
     return [self doResultSearch:searchSql];
 }
 
@@ -803,6 +796,8 @@
                 result.dog_id = sqlite3_column_int(sqlStatement, 7);
                 result.id = sqlite3_column_int(sqlStatement, 8);
                 result.position = sqlite3_column_int(sqlStatement, 9);
+                result.club = [[NSString alloc] initWithUTF8String:(const char *)sqlite3_column_text(sqlStatement, 10)];
+                result.event = [[NSString alloc] initWithUTF8String:(const char *)sqlite3_column_text(sqlStatement, 11)];
                 
                 [results addObject:result];
             }
@@ -824,7 +819,7 @@
 }
 
 - (NSMutableArray *)getResultsForDog:(int)dogId{
-    NSString *querySQL = [NSString stringWithFormat:@"SELECT place, event_date, is_competition, level, Results.comment, result, name, dog_id, Results.id, position  FROM Results, Dogs WHERE Results.Dog_id = Dogs.id AND Dogs.id = %d ORDER by Results.Dog_id, event_date DESC", dogId];
+    NSString *querySQL = [NSString stringWithFormat:@"SELECT place, event_date, is_competition, level, Results.comment, result, name, dog_id, Results.id, position, club, event  FROM Results, Dogs WHERE Results.Dog_id = Dogs.id AND Dogs.id = %d ORDER by Results.Dog_id, event_date DESC", dogId];
     return [self doResultSearch:querySQL];
 }
 

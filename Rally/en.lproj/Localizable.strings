@@ -10,6 +10,7 @@
 "ADD_DOG_TEXT" = "Before creating a result, you must enter information about your dog.";
 "ADD_RESULT" = "Add Result";
 "BREED" = "Breed";
+"CLUB" = "Club";
 "COMPETITION" = "Event";
 "DOB" = "Date of birth";
 "DATE" = "Date";
@@ -19,6 +20,7 @@
 "DROP_DOG_RESULTS" = "Do you really want to delete the dog? The Rally-O results will also be removed.";
 "DROP_RESULT_HEADER" = "Delete results";
 "DROP_RESULT" = "Do you really want to delete the result?";
+"EVENT_NAME" = "Event";
 "FEMALE" = "Female";
 "HEIGHT" = "Height";
 "LEVEL" = "Level";

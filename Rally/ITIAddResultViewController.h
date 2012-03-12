@@ -36,6 +36,8 @@
 @property (nonatomic, retain) IBOutlet UIButton *addCommentButton;
 @property (nonatomic, retain) IBOutlet UIButton *editCommentButton;
 @property (nonatomic, assign) int dogId;
+@property (nonatomic, retain) IBOutlet UITextField *eventText;
+@property (nonatomic, retain) IBOutlet UITextField *clubText;
 
 - (IBAction)backgroundTouched:(id)sender;
 - (IBAction)dateChanged:(id)sender;

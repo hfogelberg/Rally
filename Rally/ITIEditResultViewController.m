@@ -26,6 +26,8 @@
 @synthesize editCommentButton;
 @synthesize levels;
 @synthesize levelsTable;
+@synthesize eventText;
+@synthesize clubText;
 
 // Update the date label when date picker is changed
 - (void) dateChanged:(id)sender{
@@ -54,6 +56,8 @@
     [pointsText resignFirstResponder];
     [placeText resignFirstResponder];
     [positionText resignFirstResponder];
+    [clubText resignFirstResponder];
+    [eventText resignFirstResponder];
     self.navigationItem.hidesBackButton = FALSE;
     
     editDate = NO;
@@ -69,12 +73,16 @@
     if(textField == dogText){
         [placeText resignFirstResponder];
         [pointsText resignFirstResponder];
+        [clubText resignFirstResponder];
+        [eventText resignFirstResponder];
         pickDate.hidden = TRUE;
         pickDog.hidden = FALSE;
         retVal = FALSE;
     }else if(textField == eventDate){
         [placeText resignFirstResponder];
         [pointsText resignFirstResponder];
+        [clubText resignFirstResponder];
+        [eventText resignFirstResponder];
         pickDog.hidden = TRUE;
         pickDate.hidden = FALSE;
         pickDate.layer.zPosition = 1;
@@ -83,18 +91,36 @@
         retVal = FALSE;
     }else if(textField == placeText){
         [pointsText resignFirstResponder];
+        [clubText resignFirstResponder];
+        [eventText resignFirstResponder];
         pickDog.hidden = TRUE;
         pickDate.hidden = TRUE;
     }else if (textField == pointsText){
         [placeText resignFirstResponder];
         [positionText resignFirstResponder];
+        [clubText resignFirstResponder];
+        [eventText resignFirstResponder];
         pickDog.hidden = TRUE;
         pickDate.hidden = TRUE;
     }else if (textField == positionText){
         [placeText resignFirstResponder];
         [pointsText resignFirstResponder];
+        [clubText resignFirstResponder];
+        [eventText resignFirstResponder];
         pickDog.hidden = TRUE;
         pickDate.hidden = TRUE;
+    }else if(textField == clubText){
+        [placeText resignFirstResponder];
+        [pointsText resignFirstResponder];
+        [eventText resignFirstResponder];
+        pickDog.hidden = TRUE;
+        pickDate.hidden = TRUE;
+    }else if(textField == eventText){
+        [placeText resignFirstResponder];
+        [pointsText resignFirstResponder];
+        [clubText resignFirstResponder];
+        pickDog.hidden = TRUE;
+        pickDate.hidden = TRUE;   
     }
         
     return retVal;
@@ -139,6 +165,8 @@
     placeText.placeholder = NSLocalizedString(@"LOCATION", nil);
     pointsText.placeholder = NSLocalizedString(@"RESULT", nil);
     positionText.placeholder = NSLocalizedString(@"PLACE", nil);
+    eventText.placeholder = NSLocalizedString(@"EVENT_NAME", nil);
+    clubText.placeholder = NSLocalizedString(@"CLUB", nil);
     
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
     self.view.backgroundColor = background;
@@ -146,10 +174,13 @@
     [self getLevels];
     [self getDogs];
     
-
     // Trime the string so the paceholder will be displayed if there isn't a proper name.
     NSString *trimmedPlace = [result.place stringByTrimmingCharactersInSet:
                                 [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *trimmedClub = [result.club stringByTrimmingCharactersInSet:
+                              [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *trimmedEvent = [result.event stringByTrimmingCharactersInSet:
+                              [NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
     dogText.text = self.result.dog_name;
     if([trimmedPlace length]>0)
@@ -159,6 +190,10 @@
     if(self.result.position>0)
         positionText.text = [NSString stringWithFormat:@"%d", self.result.position];
     eventDate.text = self.result.event_date;
+    if([trimmedClub length]>0)
+        eventText.text = self.result.event;
+    if([trimmedEvent length]>0)
+        clubText.text = self.result.club;
     
     isCompetitioSeg.selectedSegmentIndex = self.result.is_competition;
     
@@ -168,28 +203,13 @@
     NSString *title =  [NSString stringWithFormat:@"%@ %@ %@", self.result.dog_name, self.result.place, self.result.event_date];
     self.navigationItem.title = title; 
     
-    [self.dogText setDelegate:self];
-    [self.dogText addTarget:self
-                        action:@selector(backgroundTouched:)
-              forControlEvents:UIControlEventEditingDidEndOnExit];
-    
-    [self.eventDate setDelegate:self];
-    
-    [self.placeText setDelegate:self];
-    [self.placeText addTarget:self
-                        action:@selector(backgroundTouched:)
-              forControlEvents:UIControlEventEditingDidEndOnExit];
-    
-    [self.pointsText setDelegate:self];
-    [self.pointsText addTarget:self
-                        action:@selector(backgroundTouched:)
-              forControlEvents:UIControlEventEditingDidEndOnExit];
-    
-    [self.positionText setDelegate:self];
-    [self.positionText addTarget:self
-                        action:@selector(backgroundTouched:)
-              forControlEvents:UIControlEventEditingDidEndOnExit];
-    
+    dogText.delegate = self;
+    eventDate.delegate = self;
+    placeText.delegate = self;
+    pointsText.delegate = self;
+    positionText.delegate = self,
+    eventText.delegate = self;
+    clubText.delegate = self;
     
     [[self.levelsTable layer] setBorderColor:[[UIColor grayColor] CGColor]];
     [[self.levelsTable layer] setBorderWidth:2.3];
@@ -211,6 +231,11 @@
     }else{
         pickDog.hidden = YES;
     }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)getLevels{
@@ -264,7 +289,9 @@
         result.points = [points intValue];
         result.position = [position intValue];
         result.event_date = dateString;
-    
+        result.event = eventText.text;
+        result.club = clubText.text;
+     
         ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
         [dataSource updateResults:result];
         [self.navigationController popViewControllerAnimated:YES];
@@ -295,6 +322,8 @@
     self.editCommentButton = Nil;
     self.levels = Nil;
     self.levelsTable = Nil;
+    self.clubText = Nil;
+    self.eventText = Nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
