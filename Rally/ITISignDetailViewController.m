@@ -37,12 +37,12 @@
 // Make sure the correct comment butt on is displaye
 - (void) viewWillAppear:(BOOL)animated{
     [self displaySign];
-    [self getSignComment];
 }
 
 // Display corret button depending on if the sign has a comment or not.
 - (void)getSignComment{
     ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
+    NSLog(@"Sign id %d", sign.id);
     signComment = [dataSource getSignComment:sign.id];
     if(signComment == nil){
         commentButton.image = [UIImage imageNamed:@"toolpen.png"];
@@ -58,6 +58,8 @@
     self.imageView.image = self.sign.image;
     self.imageView.layer.masksToBounds = YES;
     self.imageView.layer.cornerRadius = 5.0;
+    
+    [self getSignComment];
 }
 
 - (void)viewDidLoad

@@ -13,6 +13,15 @@
 @synthesize dogId;
 @synthesize results;
 @synthesize resultsTable;
+@synthesize searchBar;
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
+    NSLog(@"Search");
+    NSString *searchParams = self.searchBar.text;
+    results = [dataSource searchResults:searchParams];
+    [self.resultsTable reloadData];
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -132,6 +141,10 @@
         ITIEditResultViewController *detailViewController = [segue destinationViewController];
         ITIResult * selectedResult = [self.results objectAtIndex:selectedRowIndex.row];
         detailViewController.result = selectedResult;
+    }else if([[segue identifier] isEqualToString:@"addResultSegue"]){ 
+        if(dogId > 0){
+            ITIAddResultViewController *addViewController = [segue destinationViewController];            addViewController.dogId = dogId;
+        }
     }
 }
 

@@ -50,7 +50,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="998" y="-291"/>
+            <point key="canvasLocation" x="958" y="-375"/>
         </scene>
         <scene sceneID="pC7-cP-r0e">
             <objects>
@@ -91,7 +91,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2106" y="-637"/>
+            <point key="canvasLocation" x="1923" y="-629"/>
         </scene>
         <scene sceneID="13">
             <objects>
@@ -146,7 +146,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="998" y="355"/>
+            <point key="canvasLocation" x="626" y="359"/>
         </scene>
         <scene sceneID="r12-4C-U68">
             <objects>
@@ -196,7 +196,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1047" y="1026"/>
+            <point key="canvasLocation" x="1123" y="922"/>
         </scene>
         <scene sceneID="3zi-9f-ExC">
             <objects>
@@ -206,9 +206,22 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="q30-2X-HFE">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                            <scopeButtonTitles>
+                                <string>Hund</string>
+                                <string>Ort</string>
+                                <string>Title</string>
+                            </scopeButtonTitles>
+                            <connections>
+                                <outlet property="delegate" destination="ygx-ZT-FxY" id="DAF-zI-MtL"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="aiM-R3-OPS">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -228,16 +241,17 @@
                     <navigationItem key="navigationItem" id="2Lk-1U-Ml9">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cCO-hu-AIj">
                             <connections>
-                                <segue destination="cwe-Lw-Ppp" kind="push" id="fiv-6f-Uht"/>
+                                <segue destination="cwe-Lw-Ppp" kind="push" identifier="addResultSegue" id="fiv-6f-Uht"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="resultsTable" destination="CWy-l0-CMD" id="vBo-QN-kzN"/>
+                        <outlet property="searchBar" destination="q30-2X-HFE" id="kqR-wh-woP"/>
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1107" y="1986"/>
+            <point key="canvasLocation" x="1231" y="1902"/>
         </scene>
         <scene sceneID="1VK-9C-zwR">
             <objects>
@@ -383,6 +397,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <pickerView contentMode="scaleToFill" id="rkp-cK-9Kh">
                                 <rect key="frame" x="0.0" y="51" width="320" height="216"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="cwe-Lw-Ppp" id="Ldm-Cq-7G0"/>
+                                    <outlet property="delegate" destination="cwe-Lw-Ppp" id="XIx-L1-27B"/>
+                                </connections>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -401,6 +419,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addCommentButton" destination="f8o-ZL-uyv" id="l0M-zA-b2c"/>
+                        <outlet property="dogPicker" destination="rkp-cK-9Kh" id="BiF-Qd-fGE"/>
                         <outlet property="dogText" destination="hIt-an-eHy" id="clE-bz-g90"/>
                         <outlet property="editCommentButton" destination="Sw1-Am-iy2" id="nVA-Lc-r8O"/>
                         <outlet property="eventDate" destination="VLX-A8-199" id="Cvx-sx-cPl"/>
@@ -423,7 +443,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1959" y="1536"/>
+            <point key="canvasLocation" x="1843" y="1472"/>
         </scene>
         <scene sceneID="6qz-U6-xu8">
             <objects>
@@ -600,7 +620,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2069" y="242"/>
+            <point key="canvasLocation" x="1923" y="126"/>
         </scene>
         <scene sceneID="8s4-xN-Ltc">
             <objects>
@@ -788,7 +808,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </tabBarController>
             </objects>
-            <point key="canvasLocation" x="-1243" y="1163"/>
+            <point key="canvasLocation" x="-1591" y="1591"/>
         </scene>
         <scene sceneID="JeS-dM-E0n">
             <objects>
@@ -848,7 +868,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="668" y="2804"/>
+            <point key="canvasLocation" x="434" y="2576"/>
         </scene>
         <scene sceneID="adS-9d-1V4">
             <objects>
@@ -1057,6 +1077,58 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="2014" y="2201"/>
         </scene>
+        <scene sceneID="Da4-cu-LXj">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SEd-tn-a3n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="VCJ-G4-gwv" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4QU-7K-iUM">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hund" minimumFontSize="17" id="chH-vc-zh2">
+                                <rect key="frame" x="20" y="20" width="280" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ort" minimumFontSize="17" id="VER-um-Evi">
+                                <rect key="frame" x="20" y="64" width="280" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Klubb" minimumFontSize="17" id="k0j-kY-rpb">
+                                <rect key="frame" x="20" y="109" width="280" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Anteckning" minimumFontSize="17" id="vSv-SG-OSo">
+                                <rect key="frame" x="20" y="157" width="280" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NQr-7t-KgS">
+                                <rect key="frame" x="228" y="211" width="72" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Sök">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="o9t-HX-aJO"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1654" y="2733"/>
+        </scene>
         <scene sceneID="xwk-Er-Bnc">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kWr-LU-RyL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1148,7 +1220,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1575" y="3129"/>
+            <point key="canvasLocation" x="891" y="3433"/>
         </scene>
         <scene sceneID="c0m-8B-xED">
             <objects>
@@ -1247,7 +1319,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1575" y="2497"/>
+            <point key="canvasLocation" x="1067" y="2733"/>
         </scene>
         <scene sceneID="enh-6D-5BO">
             <objects>
@@ -1265,7 +1337,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="72" y="-355"/>
+            <point key="canvasLocation" x="-160" y="-231"/>
         </scene>
         <scene sceneID="uwe-hL-Qob">
             <objects>
@@ -1319,7 +1391,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="-139" y="1706"/>
+            <point key="canvasLocation" x="-160" y="1722"/>
         </scene>
         <scene sceneID="Sbx-ce-23g">
             <objects>
@@ -1337,7 +1409,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="-183" y="2452"/>
+            <point key="canvasLocation" x="-160" y="2444"/>
         </scene>
         <scene sceneID="cdZ-ah-vRV">
             <objects>
@@ -1380,7 +1452,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2824" y="151"/>
+            <point key="canvasLocation" x="3056" y="111"/>
         </scene>
     </scenes>
     <resources>
@@ -1526,6 +1598,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIResultsViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="resultsTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
             </relationships>
         </class>
         <class className="ITISettingsViewController" superclassName="UIViewController">
@@ -1567,11 +1640,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="9UD-zp-lBC"/>
+        <segue reference="hX7-Un-grM"/>
         <segue reference="vFY-zg-FSk"/>
-        <segue reference="QGg-Zm-D5P"/>
+        <segue reference="ZrU-St-2bx"/>
         <segue reference="U5j-fl-RBI"/>
         <segue reference="RzE-ON-JCY"/>
-        <segue reference="WIE-aG-si2"/>
+        <segue reference="QQt-cj-3o3"/>
     </inferredMetricsTieBreakers>
 </document>

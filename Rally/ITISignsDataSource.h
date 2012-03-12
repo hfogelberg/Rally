@@ -42,14 +42,15 @@
 - (void) deleteDog: (int) dogId;
 - (void) addDogComment: (ITIDog *) dog;
 - (BOOL) dogHasComment: (int) dogId;
+- (ITIDog *) getDogById: (int) dogId;
 
 // Results
 - (NSMutableArray *) getResults;
-- (void) createResult: (ITIResult *) newResult;
-- (void) updateResults: (ITIResult *) changedResult;
 - (NSMutableArray *) getResultsForDog: (int) dogId;
-- (void) deleteResult: (int) resultId;
-- (NSMutableArray *) searchResults: (NSString *) dogName: (NSString *) city;
+- (NSMutableArray *) searchResults: (NSString *) searchParams;
+- (NSMutableArray *) doResultSearch: (NSString *) searchParams;
+- (void) createResult: (ITIResult *) newResult;
+- (void) updateResults: (ITIResult *) changedResult;- (void) deleteResult: (int) resultId;
 - (void) saveResultComment: (ITIResult *) result;
 - (void) deleteResultsForDog: (int) dogId;
 - (BOOL) resultHasComment: (int) resultId;
@@ -64,6 +65,7 @@
 - (void) updateLevels: (int) level;
 - (NSMutableArray *) getLevelDescriptions;
 - (NSMutableArray *) getLevels;
+- (int) getLevelCodeForDescription: (NSString *) description;
 
 // Comments
 - (ITISignComment *) getSignComment: (int) signId;

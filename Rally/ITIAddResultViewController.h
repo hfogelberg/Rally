@@ -35,6 +35,7 @@
 @property (nonatomic, retain) NSMutableArray *levels;
 @property (nonatomic, retain) IBOutlet UIButton *addCommentButton;
 @property (nonatomic, retain) IBOutlet UIButton *editCommentButton;
+@property (nonatomic, assign) int dogId;
 
 - (IBAction)backgroundTouched:(id)sender;
 - (IBAction)dateChanged:(id)sender;

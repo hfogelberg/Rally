@@ -26,6 +26,7 @@
 @synthesize levels;
 @synthesize addCommentButton;
 @synthesize editCommentButton;
+@synthesize dogId;
 
 // Save the result to the database.
 // If the date picker or dog picker dismiss when the user taps save. 
@@ -111,12 +112,14 @@
     
     if(textField == dogText){
         [placeText resignFirstResponder];
-        pickDate.hidden = TRUE;
-        dogPicker.hidden = FALSE;
-        ITIDog *dog = [dogs objectAtIndex:0];
-        dogText.text = dog.name;
-        result.dog_id = dog.id;
-        result.dog_name = dog.name;
+        if(dogId==0){
+            pickDate.hidden = TRUE;
+            dogPicker.hidden = FALSE;
+            ITIDog *dog = [dogs objectAtIndex:0];
+            dogText.text = dog.name;
+            result.dog_id = dog.id;
+            result.dog_name = dog.name;
+        }
         retVal = FALSE;
     }else if(textField == eventDate){
         [placeText resignFirstResponder];
@@ -218,9 +221,18 @@
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
     self.view.backgroundColor = background;
     
-    [self getDogs];
-    [self getLevels];
+    if(dogId > 0){
+        ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
+        selectedDog = [dataSource getDogById:dogId];
+        dogText.text = selectedDog.name;
+        result.dog_id = selectedDog.id;
+        result.dog_name = selectedDog.name;
+    }else{
+        [self getDogs];
+    }
     
+    [self getLevels];
+
     self.result = [[ITIResult alloc] init];
     
     NSDate *now = [NSDate date];
@@ -234,24 +246,22 @@
     eventDate.text = [[NSString alloc] initWithFormat:@"%@-%@-%@", year, month, day];
     self.result.event_date = eventDate.text;
     
+    pointsText.delegate = self;
+    positionText.delegate = self;
+    eventDate.delegate = self;
+    placeText.delegate = self;
+    dogText.delegate = self;
+    
     [[self.levelTable layer] setBorderColor:[[UIColor grayColor] CGColor]];
     [[self.levelTable layer] setBorderWidth:2.3];
     [[self.levelTable layer] setCornerRadius:15];
-    
-    [self.dogText setDelegate:self];
+
     [self.dogText addTarget:self
-                        action:@selector(backgroundTouched:)
-              forControlEvents:UIControlEventEditingDidEndOnExit];
-    
-    [self.eventDate setDelegate:self];
-    
-    [self.placeText setDelegate:self];
+                     action:@selector(backgroundTouched:)
+           forControlEvents:UIControlEventEditingDidEndOnExit];
     [self.placeText addTarget:self
-                        action:@selector(backgroundTouched:)
-              forControlEvents:UIControlEventEditingDidEndOnExit];
-    
-    [self.pointsText setDelegate:self];
-    [self.positionText setDelegate:self];
+                       action:@selector(backgroundTouched:)
+             forControlEvents:UIControlEventEditingDidEndOnExit];
     
     [self hideKeyboards];
 }
