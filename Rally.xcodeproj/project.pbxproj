@@ -23,7 +23,6 @@
 		5772F77815063F9C00CF2FCA /* questionmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 5772F77615063F9C00CF2FCA /* questionmark.png */; };
 		5772F78915064C4100CF2FCA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5772F78B15064C4100CF2FCA /* Localizable.strings */; };
 		5772F79515064DF400CF2FCA /* ITIAddResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5772F79415064DF400CF2FCA /* ITIAddResultViewController.m */; };
-		57AF1565150A06AC008E9B27 /* ITISearchFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AF1564150A06AB008E9B27 /* ITISearchFormViewController.m */; };
 		57B277E114E92EA4006FA5E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57B277E014E92EA4006FA5E4 /* UIKit.framework */; };
 		57B277E314E92EA4006FA5E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57B277E214E92EA4006FA5E4 /* Foundation.framework */; };
 		57B277E514E92EA4006FA5E4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57B277E414E92EA4006FA5E4 /* CoreGraphics.framework */; };
@@ -238,8 +237,6 @@
 		5772F78A15064C4100CF2FCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5772F78F15064C6000CF2FCA /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5772F79415064DF400CF2FCA /* ITIAddResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITIAddResultViewController.m; sourceTree = "<group>"; };
-		57AF1563150A06A9008E9B27 /* ITISearchFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITISearchFormViewController.h; sourceTree = "<group>"; };
-		57AF1564150A06AB008E9B27 /* ITISearchFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITISearchFormViewController.m; sourceTree = "<group>"; };
 		57B277DC14E92EA4006FA5E4 /* Rally.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rally.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57B277E014E92EA4006FA5E4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		57B277E214E92EA4006FA5E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -600,8 +597,6 @@
 				57F58E421500D4010009EB29 /* ITISignCommentViewController.h */,
 				57F58E431500D4010009EB29 /* ITISignCommentViewController.m */,
 				57B2781A14E93924006FA5E4 /* ITISignsViewController.h */,
-				57AF1563150A06A9008E9B27 /* ITISearchFormViewController.h */,
-				57AF1564150A06AB008E9B27 /* ITISearchFormViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1077,7 +1072,6 @@
 				57DD0E4414FBB18500D5842C /* ITIDogCommentViewController.m in Sources */,
 				57F58E441500D4020009EB29 /* ITISignCommentViewController.m in Sources */,
 				5772F79515064DF400CF2FCA /* ITIAddResultViewController.m in Sources */,
-				57AF1565150A06AC008E9B27 /* ITISearchFormViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
