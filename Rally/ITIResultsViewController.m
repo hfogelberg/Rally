@@ -51,16 +51,19 @@
     self.title = NSLocalizedString(@"RESULTS", nil);
 }
 
-- (void)searchButtonPushed:(id)sender{
-    if(searchBar.hidden == TRUE){
-        searchBar.hidden = FALSE;
-    }
-        
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    UIView *hackView = [[UIView alloc] initWithFrame:CGRectZero];
+    UIBarButtonItem *hackItem = [[UIBarButtonItem alloc] initWithCustomView:hackView];      
+    self.navigationItem.backBarButtonItem = hackItem;
+    
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectZero];
+    [self.searchBar sizeToFit];
+    self.navigationItem.titleView = self.searchBar;
+    self.searchBar.delegate = self;
+    self.searchBar.showsCancelButton = TRUE;
     
     self.navigationController.topViewController.title = NSLocalizedString(@"RESULTS", nil);
     UIImage *bgImage= [UIImage imageNamed:@"background.png"];
@@ -99,6 +102,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    self.searchBar.text = @"";
     
 }
 

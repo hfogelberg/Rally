@@ -191,9 +191,9 @@
         positionText.text = [NSString stringWithFormat:@"%d", self.result.position];
     eventDate.text = self.result.event_date;
     if([trimmedClub length]>0)
-        eventText.text = self.result.event;
-    if([trimmedEvent length]>0)
         clubText.text = self.result.club;
+    if([trimmedEvent length]>0)
+        eventText.text = self.result.event;
     
     isCompetitioSeg.selectedSegmentIndex = self.result.is_competition;
     
@@ -299,7 +299,10 @@
         }else{
             result.club = @" ";
         }
-     
+        NSIndexPath *selectedRowIndex = [levelsTable indexPathForSelectedRow];
+        ITILevel *selectedLevel = [levels objectAtIndex:selectedRowIndex.row];
+        result.level = selectedLevel.code;
+        
         ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
         [dataSource updateResults:result];
         [self.navigationController popViewControllerAnimated:YES];

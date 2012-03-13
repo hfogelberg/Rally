@@ -729,34 +729,34 @@
             }
             
             // Result comment
-            sql = [paramsBase stringByAppendingFormat:@"AND Dogs.comment LIKE '%%%@%%'", param];            
+            sql = [paramsBase stringByAppendingFormat:@"AND Results.comment LIKE '%%%@%%'", param];            
             NSMutableArray *resultComments = [self doResultSearch:sql];
             if([resultComments count] > 0) 
             {   
                 NSLog(@"Param %d %@ is a result comment. Add to param list", i, param);
-                queryParam = [queryParam stringByAppendingFormat:@" AND Dogs.comment LIKE '%%%@%%'", param];   
+                queryParam = [queryParam stringByAppendingFormat:@" AND Results.comment LIKE '%%%@%%'", param];   
             }else{
                 NSLog(@"Param %@ is not a result comment", param);
             }
             
             // Club
-            sql = [paramsBase stringByAppendingFormat:@"AND Dogs.club LIKE '%%%@%%'", param];            
+            sql = [paramsBase stringByAppendingFormat:@"AND Results.club LIKE '%%%@%%'", param];            
             NSMutableArray *clubs = [self doResultSearch:sql];
             if([clubs count] > 0) 
             {   
                 NSLog(@"Param %d %@ is a club. Add to param list", i, param);
-                queryParam = [queryParam stringByAppendingFormat:@" AND Dogs.club LIKE '%%%@%%'", param];   
+                queryParam = [queryParam stringByAppendingFormat:@" AND Results.club LIKE '%%%@%%'", param];   
             }else{
                 NSLog(@"Param %@ is not a club", param);
             }
             
             // Event name
-            sql = [paramsBase stringByAppendingFormat:@"AND Dogs.event LIKE '%%%@%%'", param];            
+            sql = [paramsBase stringByAppendingFormat:@"AND Results.event LIKE '%%%@%%'", param];            
             NSMutableArray *events = [self doResultSearch:sql];
-            if([resultComments count] > 0) 
+            if([events count] > 0) 
             {   
                 NSLog(@"Param %d %@ is an event. Add to param list", i, param);
-                queryParam = [queryParam stringByAppendingFormat:@" AND Dogs.event LIKE '%%%@%%'", param];   
+                queryParam = [queryParam stringByAppendingFormat:@" AND Results.event LIKE '%%%@%%'", param];   
             }else{
                 NSLog(@"Param %@ is not an event", param);
             }
