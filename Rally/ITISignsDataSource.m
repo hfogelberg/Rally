@@ -674,7 +674,7 @@
     [self create:insertSQL];
 }
 
-- (NSMutableArray *)searchResults:(NSString *)searchParams{
+- (NSMutableArray *)searchResults:(NSString *)searchParams :(int) dogId{
     NSLog(@"Search params %@", searchParams);
     
     NSMutableArray *results;
@@ -684,8 +684,15 @@
     NSArray *params = [searchParams componentsSeparatedByString: @" "];            
     NSLog(@"Number of search params: %d", [params count]);
     
+    if(dogId>0)
+        queryParam = [queryParam stringByAppendingFormat:@" AND Dogs.id = %d", dogId];
+    
     // 1. First figure out what the various search params are,    
     for(int i=0;i<[params count];i++){
+        NSString *paramsBase = @"SELECT * FROM Results, Dogs WHERE Results.Dog_id = Dogs.id ";
+        if(dogId>0)
+            paramsBase = [paramsBase stringByAppendingFormat:@" AND Dogs.id = %d", dogId];
+        
         param = [params objectAtIndex:i];
         NSLog(@"Checking search param %@", param);
         
@@ -693,10 +700,9 @@
         NSNumber *number = [numberFormatter numberFromString:param];
         if(number==nil){
             // No. Let's figure out what it is 
-            NSString *paramsBase = @"SELECT * FROM Results, Dogs WHERE Results.Dog_id = Dogs.id ";
 
             // Dog
-            sql = [paramsBase stringByAppendingFormat:@"AND Dogs.name LIKE '%%%@%%'", param];            
+            sql = [paramsBase stringByAppendingFormat:@" AND Dogs.name LIKE '%%%@%%'", param];            
             NSMutableArray *dogs = [self doResultSearch:sql];
             if([dogs count] > 0) 
             {   
@@ -707,7 +713,7 @@
             }
         
             // City
-            sql = [paramsBase stringByAppendingFormat:@"AND place LIKE '%%%@%%'", param];            
+            sql = [paramsBase stringByAppendingFormat:@" AND place LIKE '%%%@%%'", param];            
             NSMutableArray *cities = [self doResultSearch:sql];
             if([cities count] > 0) 
             {   
@@ -717,8 +723,8 @@
                 NSLog(@"Parma %@ is no city", param);
             }
             
-            // Dog comment
-            sql = [paramsBase stringByAppendingFormat:@"AND Dogs.comment LIKE '%%%@%%'", param];            
+            // Dog comment 
+            sql = [paramsBase stringByAppendingFormat:@" AND Dogs.comment LIKE '%%%@%%'", param];            
             NSMutableArray *dogComments = [self doResultSearch:sql];
             if([dogComments count] > 0) 
             {   
@@ -729,7 +735,7 @@
             }
             
             // Result comment
-            sql = [paramsBase stringByAppendingFormat:@"AND Results.comment LIKE '%%%@%%'", param];            
+            sql = [paramsBase stringByAppendingFormat:@" AND Results.comment LIKE '%%%@%%'", param];            
             NSMutableArray *resultComments = [self doResultSearch:sql];
             if([resultComments count] > 0) 
             {   
@@ -740,7 +746,7 @@
             }
             
             // Club
-            sql = [paramsBase stringByAppendingFormat:@"AND Results.club LIKE '%%%@%%'", param];            
+            sql = [paramsBase stringByAppendingFormat:@" AND Results.club LIKE '%%%@%%'", param];            
             NSMutableArray *clubs = [self doResultSearch:sql];
             if([clubs count] > 0) 
             {   
@@ -751,7 +757,7 @@
             }
             
             // Event name
-            sql = [paramsBase stringByAppendingFormat:@"AND Results.event LIKE '%%%@%%'", param];            
+            sql = [paramsBase stringByAppendingFormat:@" AND Results.event LIKE '%%%@%%'", param];            
             NSMutableArray *events = [self doResultSearch:sql];
             if([events count] > 0) 
             {   

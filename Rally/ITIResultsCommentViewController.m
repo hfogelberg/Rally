@@ -17,7 +17,7 @@
 
 // Resize text view when editing
 - (void)textViewDidBeginEditing:(UITextView *)textView{
-    CGRect r = CGRectMake (5, 55, 310, 360);
+    CGRect r = CGRectMake (5, 55, 310, 180);
     [commentText setFrame: r];
     commentText.layer.zPosition = 1;
     self.navigationItem.hidesBackButton = FALSE;
@@ -69,7 +69,7 @@
     
     commentText.text = result.comment;
     
-    [self.commentText setDelegate:self];
+    self.commentText.delegate = self;
     
     // Make a border around the comment text area.
     [[self.commentText layer] setBorderColor:[[UIColor grayColor] CGColor]];

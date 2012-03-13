@@ -19,7 +19,7 @@
     ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
     NSLog(@"Search");
     NSString *searchParams = self.searchBar.text;
-    results = [dataSource searchResults:searchParams];
+    results = [dataSource searchResults:searchParams :dogId];
     [self.resultsTable reloadData];
     [self.searchBar resignFirstResponder];
 }

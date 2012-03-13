@@ -47,10 +47,11 @@
 // Results
 - (NSMutableArray *) getResults;
 - (NSMutableArray *) getResultsForDog: (int) dogId;
-- (NSMutableArray *) searchResults: (NSString *) searchParams;
+- (NSMutableArray *) searchResults: (NSString *) searchParams :(int) dogId;
 - (NSMutableArray *) doResultSearch: (NSString *) searchParams;
 - (void) createResult: (ITIResult *) newResult;
-- (void) updateResults: (ITIResult *) changedResult;- (void) deleteResult: (int) resultId;
+- (void) updateResults: (ITIResult *) changedResult;-
+(void) deleteResult: (int) resultId;
 - (void) saveResultComment: (ITIResult *) result;
 - (void) deleteResultsForDog: (int) dogId;
 - (BOOL) resultHasComment: (int) resultId;
