@@ -61,8 +61,7 @@
 
 - (void)populateDataSource{
     ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
-    self.dogs = [dataSource getDogs];
-}
+    self.dogs = [dataSource getDogs];}
 
 - (void)viewDidAppear:(BOOL)animated
 {

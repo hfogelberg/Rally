@@ -22,5 +22,6 @@
 @property (nonatomic, retain) IBOutlet UISearchBar *searchBar;
 
 - (void) populateDataSource;
+- (IBAction)searchButtonPushed:(id)sender;
 
 @end

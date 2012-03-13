@@ -206,7 +206,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="q30-2X-HFE">
+                        <searchBar key="tableHeaderView" contentMode="redraw" showsCancelButton="YES" id="q30-2X-HFE">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits" autocorrectionType="no"/>
@@ -262,14 +262,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="bu0-jd-EC3">
-                                <rect key="frame" x="6" y="51" width="153" height="31"/>
+                                <rect key="frame" x="6" y="43" width="153" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="2n5-0t-p1r">
-                                <rect key="frame" x="167" y="209" width="67" height="31"/>
+                                <rect key="frame" x="167" y="172" width="67" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -279,7 +279,7 @@
                                 </connections>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="KdL-TY-cY8">
-                                <rect key="frame" x="6" y="96" width="200" height="44"/>
+                                <rect key="frame" x="6" y="82" width="200" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <segments>
@@ -291,14 +291,14 @@
                                 </connections>
                             </segmentedControl>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="VLX-A8-199">
-                                <rect key="frame" x="214" y="103" width="100" height="31"/>
+                                <rect key="frame" x="214" y="89" width="100" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="c5y-Ao-Tng">
-                                <rect key="frame" x="248" y="209" width="67" height="31"/>
+                                <rect key="frame" x="248" y="172" width="67" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -308,7 +308,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="hIt-an-eHy">
-                                <rect key="frame" x="6" y="12" width="309" height="31"/>
+                                <rect key="frame" x="6" y="6" width="309" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -318,7 +318,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="f8o-ZL-uyv">
-                                <rect key="frame" x="211" y="272" width="60" height="70"/>
+                                <rect key="frame" x="211" y="244" width="60" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -334,7 +334,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="UoU-aJ-1Xf">
-                                <rect key="frame" x="6" y="161" width="153" height="191"/>
+                                <rect key="frame" x="6" y="133" width="153" height="191"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -354,7 +354,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Sw1-Am-iy2">
-                                <rect key="frame" x="211" y="282" width="60" height="70"/>
+                                <rect key="frame" x="211" y="254" width="60" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" backgroundImage="paper.png">
@@ -366,27 +366,24 @@
                                 </state>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="W6q-4t-dU9">
-                                <rect key="frame" x="177" y="51" width="137" height="31"/>
+                                <rect key="frame" x="177" y="43" width="137" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="kbe-36-KUu">
-                                <rect key="frame" x="167" y="161" width="148" height="31"/>
+                                <rect key="frame" x="167" y="133" width="148" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done"/>
                             </textField>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="0Eb-9q-kJi">
-                                <rect key="frame" x="0.0" y="142" width="320" height="216"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="6Sw-Xu-6dq">
+                                <rect key="frame" x="0.0" y="128" width="320" height="216"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <date key="date" timeIntervalSinceReferenceDate="353240650.35468602">
-                                    <!--2012-03-12 10:24:10 +0000-->
-                                </date>
-                                <date key="minimumDate" timeIntervalSinceReferenceDate="-347115600">
-                                    <!--1990-01-01 11:00:00 +0000-->
+                                <date key="date" timeIntervalSinceReferenceDate="-341058580.09779602">
+                                    <!--1990-03-12 13:30:19 +0000-->
                                 </date>
                                 <locale key="locale" localeIdentifier="en_US"/>
                                 <timeZone key="timeZone" name="America/Los_Angeles">
@@ -410,13 +407,17 @@ AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
 </mutableData>
                                 </timeZone>
+                                <connections>
+                                    <action selector="changeDogName:" destination="cwe-Lw-Ppp" eventType="valueChanged" id="mRD-7M-cNJ"/>
+                                    <action selector="dateChanged:" destination="cwe-Lw-Ppp" eventType="valueChanged" id="XKP-B5-OiI"/>
+                                </connections>
                             </datePicker>
-                            <pickerView contentMode="scaleToFill" id="lVF-4V-8dj">
-                                <rect key="frame" x="0.0" y="48" width="320" height="216"/>
+                            <pickerView contentMode="scaleToFill" id="UTn-Ft-lDB">
+                                <rect key="frame" x="0.0" y="43" width="320" height="216"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="cwe-Lw-Ppp" id="kW7-bf-Z2B"/>
-                                    <outlet property="delegate" destination="cwe-Lw-Ppp" id="ZOK-ui-7p9"/>
+                                    <outlet property="dataSource" destination="cwe-Lw-Ppp" id="ngD-F2-3zC"/>
+                                    <outlet property="delegate" destination="cwe-Lw-Ppp" id="8Ms-T2-G4L"/>
                                 </connections>
                             </pickerView>
                         </subviews>
@@ -438,14 +439,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <connections>
                         <outlet property="addCommentButton" destination="f8o-ZL-uyv" id="l0M-zA-b2c"/>
                         <outlet property="clubText" destination="W6q-4t-dU9" id="7xQ-zm-es9"/>
-                        <outlet property="dogPicker" destination="lVF-4V-8dj" id="ZBm-Fr-z6c"/>
+                        <outlet property="dogPicker" destination="UTn-Ft-lDB" id="pWq-oQ-LyW"/>
                         <outlet property="dogText" destination="hIt-an-eHy" id="clE-bz-g90"/>
                         <outlet property="editCommentButton" destination="Sw1-Am-iy2" id="nVA-Lc-r8O"/>
                         <outlet property="eventDate" destination="VLX-A8-199" id="Cvx-sx-cPl"/>
                         <outlet property="eventText" destination="kbe-36-KUu" id="U8A-Am-mFm"/>
                         <outlet property="isCompetitioSeg" destination="KdL-TY-cY8" id="7ul-5v-Idb"/>
                         <outlet property="levelTable" destination="UoU-aJ-1Xf" id="Riw-LL-age"/>
-                        <outlet property="pickDate" destination="0Eb-9q-kJi" id="OV3-Wf-NgU"/>
+                        <outlet property="pickDate" destination="6Sw-Xu-6dq" id="aWR-QP-vrM"/>
                         <outlet property="placeText" destination="bu0-jd-EC3" id="930-2d-Xu6"/>
                         <outlet property="pointsText" destination="2n5-0t-p1r" id="nC9-K5-jPc"/>
                         <outlet property="positionText" destination="c5y-Ao-Tng" id="CEV-fV-Bn6"/>
@@ -905,7 +906,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="0p2-7d-MR5">
-                                <rect key="frame" x="167" y="202" width="67" height="31"/>
+                                <rect key="frame" x="167" y="174" width="67" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -934,7 +935,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="wVM-7b-Z7w">
-                                <rect key="frame" x="248" y="202" width="67" height="31"/>
+                                <rect key="frame" x="248" y="174" width="67" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -948,7 +949,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Kze-7a-sMH">
-                                <rect key="frame" x="167" y="261" width="60" height="70"/>
+                                <rect key="frame" x="167" y="256" width="60" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -964,7 +965,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1HY-0e-yBL">
-                                <rect key="frame" x="255" y="261" width="60" height="70"/>
+                                <rect key="frame" x="255" y="256" width="60" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -980,7 +981,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OOd-XC-bLf">
-                                <rect key="frame" x="255" y="261" width="60" height="70"/>
+                                <rect key="frame" x="255" y="256" width="60" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -996,7 +997,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="bEr-vx-gaK">
-                                <rect key="frame" x="6" y="140" width="153" height="191"/>
+                                <rect key="frame" x="6" y="135" width="153" height="191"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1017,7 +1018,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </connections>
                             </tableView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="pgL-q1-an5">
-                                <rect key="frame" x="167" y="140" width="148" height="31"/>
+                                <rect key="frame" x="167" y="135" width="148" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1030,14 +1031,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
                             </textField>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" id="IpI-f8-s1i">
-                                <rect key="frame" x="0.0" y="131" width="320" height="216"/>
+                            <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="P32-p3-fWw">
+                                <rect key="frame" x="0.0" y="123" width="320" height="216"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <date key="date" timeIntervalSinceReferenceDate="353246880.15070802">
-                                    <!--2012-03-12 12:08:00 +0000-->
-                                </date>
-                                <date key="minimumDate" timeIntervalSinceReferenceDate="-347115600">
-                                    <!--1990-01-01 11:00:00 +0000-->
+                                <date key="date" timeIntervalSinceReferenceDate="353251227.827232">
+                                    <!--2012-03-12 13:20:27 +0000-->
                                 </date>
                                 <locale key="locale" localeIdentifier="en_US"/>
                                 <timeZone key="timeZone" name="America/Los_Angeles">
@@ -1062,12 +1060,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
 </mutableData>
                                 </timeZone>
                             </datePicker>
-                            <pickerView contentMode="scaleToFill" id="Ksf-bw-T07">
-                                <rect key="frame" x="0.0" y="45" width="320" height="216"/>
+                            <pickerView contentMode="scaleToFill" id="Ats-5n-lga">
+                                <rect key="frame" x="0.0" y="43" width="320" height="216"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="MTG-SE-XE7" id="gWe-lZ-KBK"/>
-                                    <outlet property="delegate" destination="MTG-SE-XE7" id="9F1-cO-WKR"/>
+                                    <outlet property="dataSource" destination="MTG-SE-XE7" id="3PU-KA-YWT"/>
+                                    <outlet property="delegate" destination="MTG-SE-XE7" id="aaC-43-4rc"/>
                                 </connections>
                             </pickerView>
                         </subviews>
@@ -1092,8 +1090,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="eventText" destination="pgL-q1-an5" id="uzo-dt-6tJ"/>
                         <outlet property="isCompetitioSeg" destination="qps-Z7-l8N" id="JAq-eF-WAK"/>
                         <outlet property="levelsTable" destination="bEr-vx-gaK" id="iMW-vt-hwG"/>
-                        <outlet property="pickDate" destination="IpI-f8-s1i" id="ltv-5k-Fat"/>
-                        <outlet property="pickDog" destination="Ksf-bw-T07" id="Q6i-ah-dMA"/>
+                        <outlet property="pickDate" destination="P32-p3-fWw" id="eGP-S1-HKN"/>
+                        <outlet property="pickDog" destination="Ats-5n-lga" id="Qzd-qB-r6g"/>
                         <outlet property="placeText" destination="Tdy-fU-8O7" id="M1J-cl-uKB"/>
                         <outlet property="pointsText" destination="0p2-7d-MR5" id="Xdh-1H-xoP"/>
                         <outlet property="positionText" destination="wVM-7b-Z7w" id="3Lg-jL-4jG"/>
@@ -1635,6 +1633,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="ITIResultsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIResultsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="searchButtonPushed:"/>
                 <relationship kind="outlet" name="resultsTable" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
             </relationships>
@@ -1679,8 +1678,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="vFY-zg-FSk"/>
-        <segue reference="ZrU-St-2bx"/>
-        <segue reference="q9D-bN-WzB"/>
+        <segue reference="QGg-Zm-D5P"/>
+        <segue reference="U5j-fl-RBI"/>
         <segue reference="RzE-ON-JCY"/>
         <segue reference="hX7-Un-grM"/>
         <segue reference="QQt-cj-3o3"/>

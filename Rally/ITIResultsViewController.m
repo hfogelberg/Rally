@@ -21,6 +21,12 @@
     NSString *searchParams = self.searchBar.text;
     results = [dataSource searchResults:searchParams];
     [self.resultsTable reloadData];
+    [self.searchBar resignFirstResponder];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    [self.searchBar resignFirstResponder];
+    [self populateDataSource];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -45,6 +51,13 @@
     self.title = NSLocalizedString(@"RESULTS", nil);
 }
 
+- (void)searchButtonPushed:(id)sender{
+    if(searchBar.hidden == TRUE){
+        searchBar.hidden = FALSE;
+    }
+        
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -52,8 +65,7 @@
     self.navigationController.topViewController.title = NSLocalizedString(@"RESULTS", nil);
     UIImage *bgImage= [UIImage imageNamed:@"background.png"];
     UIImageView *bgView= [[UIImageView alloc] initWithImage:bgImage];
-    resultsTable.backgroundView = bgView;  
-    
+    resultsTable.backgroundView = bgView;      
     searchResults.delegate = self;
 }
 
@@ -65,6 +77,8 @@
     }else{
         self.results = [dataSource getResultsForDog:dogId];
     }
+    
+    [self.resultsTable reloadData];
 }
 
 - (void)viewDidUnload
@@ -80,7 +94,6 @@
 {
     [super viewWillAppear:animated];
     [self populateDataSource];
-    [self.resultsTable reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated

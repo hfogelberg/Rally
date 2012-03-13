@@ -71,11 +71,11 @@
             result.position = [position intValue];
             result.event_date = dateString;
             result.is_competition =[isCompetitioSeg selectedSegmentIndex];
-            if([eventText.text isEqual: [NSNull null]])
+            if([eventText.text length]==0)
                 result.event = @" ";
             else    
                 result.event = eventText.text;
-            if([clubText.text isEqual: [NSNull null]])
+            if([clubText.text length]==0)
                 result.club = @" ";
             else
                 result.club = clubText.text;

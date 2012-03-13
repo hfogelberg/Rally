@@ -289,8 +289,16 @@
         result.points = [points intValue];
         result.position = [position intValue];
         result.event_date = dateString;
-        result.event = eventText.text;
-        result.club = clubText.text;
+        if([eventText.text length]>0){
+            result.event = eventText.text;
+        }else{
+            result.event = @" ";
+        }
+        if([clubText.text length]>0){
+            result.club = clubText.text;
+        }else{
+            result.club = @" ";
+        }
      
         ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
         [dataSource updateResults:result];

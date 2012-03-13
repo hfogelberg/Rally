@@ -33,8 +33,11 @@
     success = [fileManager fileExistsAtPath:databasePath];
     
     if(!success){
+        NSLog(@"Database not there. Install it");
         NSString *databasePathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:databaseName];
         [fileManager copyItemAtPath:databasePathFromApp toPath:databasePath error:nil];
+    }else{
+        NSLog(@"Dataabse in place.");
     }
     
     databaseName = nil;

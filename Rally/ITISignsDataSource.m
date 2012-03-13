@@ -658,7 +658,7 @@
 }
 
 - (void) updateResults: (ITIResult *) changedResult{
-    NSString *updateSQL = [NSString stringWithFormat: @"UPDATE Results SET place = \"%@\", event_date=\"%@\", is_competition=%d, level=%d, comment=\"%@\", result=%d, dog_id=%d, position=%d event = \"%@\", club = \"%@\" WHERE id=%d", changedResult.place, changedResult.event_date, changedResult.is_competition, changedResult.level, changedResult.comment, changedResult.points, changedResult.dog_id, changedResult.position,  changedResult.id, changedResult.club, changedResult.event]; 
+    NSString *updateSQL = [NSString stringWithFormat: @"UPDATE Results SET place = \"%@\", event_date=\"%@\", is_competition=%d, level=%d, comment=\"%@\", result=%d, dog_id=%d, position=%d, event = \"%@\", club = \"%@\" WHERE id=%d", changedResult.place, changedResult.event_date, changedResult.is_competition, changedResult.level, changedResult.comment, changedResult.points, changedResult.dog_id, changedResult.position,  changedResult.event, changedResult.club, changedResult.id]; 
     [self update:updateSQL];
 }
 
@@ -677,10 +677,10 @@
 - (NSMutableArray *)searchResults:(NSString *)searchParams{
     NSLog(@"Search params %@", searchParams);
     
-    NSMutableArray *results = [[NSMutableArray alloc] init];
+    NSMutableArray *results;
+    NSString *sql;
+    NSString *param;
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];    NSString *queryParam = [[NSString alloc] init];
-    NSString *sql = [[NSString alloc] init];
-    NSString *param = [[NSString alloc] init];
     NSArray *params = [searchParams componentsSeparatedByString: @" "];            
     NSLog(@"Number of search params: %d", [params count]);
     
@@ -740,8 +740,26 @@
             }
             
             // Club
+            sql = [paramsBase stringByAppendingFormat:@"AND Dogs.club LIKE '%%%@%%'", param];            
+            NSMutableArray *clubs = [self doResultSearch:sql];
+            if([clubs count] > 0) 
+            {   
+                NSLog(@"Param %d %@ is a club. Add to param list", i, param);
+                queryParam = [queryParam stringByAppendingFormat:@" AND Dogs.club LIKE '%%%@%%'", param];   
+            }else{
+                NSLog(@"Param %@ is not a club", param);
+            }
             
             // Event name
+            sql = [paramsBase stringByAppendingFormat:@"AND Dogs.event LIKE '%%%@%%'", param];            
+            NSMutableArray *events = [self doResultSearch:sql];
+            if([resultComments count] > 0) 
+            {   
+                NSLog(@"Param %d %@ is an event. Add to param list", i, param);
+                queryParam = [queryParam stringByAppendingFormat:@" AND Dogs.event LIKE '%%%@%%'", param];   
+            }else{
+                NSLog(@"Param %@ is not an event", param);
+            }
             
             // Level
             int levelId = [self getLevelCodeForDescription:param];
@@ -756,8 +774,10 @@
     }
     
     // 2. Perform the actual search
-    NSString *sqlQuery = [NSString stringWithFormat:@"SELECT place, event_date, is_competition, level, Results.comment, result, name, dog_id, Results.id, position FROM Results, Dogs WHERE Results.dog_id = Dogs.id %@", queryParam];
-    results = [self doResultSearch:sqlQuery];
+    if([queryParam length]>0){
+        NSString *sqlQuery = [NSString stringWithFormat:@"SELECT place, event_date, is_competition, level, Results.comment, result, name, dog_id, Results.id, position, club, event FROM Results, Dogs WHERE Results.dog_id = Dogs.id %@", queryParam];
+        results = [self doResultSearch:sqlQuery];
+    }
     
     return results;
 }
