@@ -10,7 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "ITIDog.h"
 #import "ITISignsDataSource.h"
-#import "ITIAppDelegate.h"
+#import "ITIDogCommentViewController.h"
 
 @interface ITIAddDogViewController : UIViewController<UITextFieldDelegate, UITextViewDelegate>
 
@@ -23,6 +23,8 @@
 @property (nonatomic, retain) IBOutlet UIButton *writeComment;
 @property (nonatomic, retain) IBOutlet UIButton *editComment;
 @property (nonatomic, assign) BOOL editDate;
+@property (nonatomic, retain) ITIDogCommentViewController *commentView;
+@property (nonatomic, retain) ITIDog *dog;
 
 
 - (IBAction) dateChanged:(id)sender;

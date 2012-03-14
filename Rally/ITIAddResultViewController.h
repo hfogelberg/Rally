@@ -12,13 +12,14 @@
 #import "ITISign.h"
 #import "ITISignsDataSource.h"
 #import <QuartzCore/QuartzCore.h>
-#import "ITIAppDelegate.h"
+#import "ITIResultsCommentViewController.h"
 
 @interface ITIAddResultViewController : UIViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDataSource, UITableViewDelegate >{
     NSMutableArray *dogs;
     ITIResult *result;
 }
 
+@property (nonatomic, retain) ITIResultsCommentViewController *commentView;
 @property (nonatomic, assign) BOOL editDate;
 @property (nonatomic, retain) NSMutableArray *dogs;
 @property (nonatomic, retain) ITIResult *result;

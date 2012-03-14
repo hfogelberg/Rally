@@ -13,7 +13,8 @@
 @synthesize saveButton;
 @synthesize cancelButton;
 @synthesize commentText;
-@synthesize result;
+@synthesize resultId;
+@synthesize comment;
 
 // Resize text view when editing
 - (void)textViewDidBeginEditing:(UITextView *)textView{
@@ -31,13 +32,11 @@
 // Otherwise save comment in app delegate
 - (void)save:(id)sender{
     
-    if(result.id>0){
+    self.comment = self.commentText.text;
+    NSLog(@"Add result comment %@", self.comment);
+    if(resultId>0){
         ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
-        result.comment = commentText.text;
-        [dataSource saveResultComment:result];
-    }else{
-        ITIAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-        delegate.comment = commentText.text;
+        [dataSource saveResultComment :self.comment :resultId];
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -54,10 +53,7 @@
 
 - (void)didReceiveMemoryWarning
 {
-    // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -66,9 +62,8 @@
     [super viewDidLoad];
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
     self.view.backgroundColor = background;
-    
-    commentText.text = result.comment;
-    
+    NSLog(@"Result comment loaded %@", self.comment);
+    self.commentText.text = self.comment;
     self.commentText.delegate = self;
     
     // Make a border around the comment text area.
@@ -83,7 +78,6 @@
     self.saveButton = Nil;
     self.cancelButton = Nil;
     self.commentText = Nil;
-    self.result = Nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

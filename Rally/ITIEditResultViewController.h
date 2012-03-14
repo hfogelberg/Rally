@@ -36,6 +36,7 @@
 @property (nonatomic, retain) NSMutableArray *levels;
 @property (nonatomic, retain) IBOutlet UITextField *clubText;
 @property (nonatomic, retain) IBOutlet UITextField *eventText;
+@property (nonatomic, retain) ITIResultsCommentViewController *commentView;
 
 - (IBAction) backgroundTouched:(id)sender;
 - (IBAction) dateChanged:(id)sender;

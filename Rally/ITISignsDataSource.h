@@ -43,6 +43,7 @@
 - (void) addDogComment: (ITIDog *) dog;
 - (BOOL) dogHasComment: (int) dogId;
 - (ITIDog *) getDogById: (int) dogId;
+- (void) saveDogComment: (int) dogId :(NSString *)comment;
 
 // Results
 - (NSMutableArray *) getResults;
@@ -50,9 +51,9 @@
 - (NSMutableArray *) searchResults: (NSString *) searchParams :(int) dogId;
 - (NSMutableArray *) doResultSearch: (NSString *) searchParams;
 - (void) createResult: (ITIResult *) newResult;
-- (void) updateResults: (ITIResult *) changedResult;-
-(void) deleteResult: (int) resultId;
-- (void) saveResultComment: (ITIResult *) result;
+- (void) updateResults: (ITIResult *) changedResult;
+- (void) deleteResult: (int) resultId;
+- (void) saveResultComment: (NSString *) commentText :(int) resultId;
 - (void) deleteResultsForDog: (int) dogId;
 - (BOOL) resultHasComment: (int) resultId;
 

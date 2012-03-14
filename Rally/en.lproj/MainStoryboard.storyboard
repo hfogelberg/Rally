@@ -350,6 +350,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="dWZ-JZ-2wW" kind="modal" identifier="editCommentSegue" modalTransitionStyle="flipHorizontal" id="geH-Fc-CH9"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="W6q-4t-dU9">
                                 <rect key="frame" x="177" y="43" width="137" height="31"/>
@@ -394,7 +397,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
 </mutableData>
                                 </timeZone>
                                 <connections>
-                                    <action selector="changeDogName:" destination="cwe-Lw-Ppp" eventType="valueChanged" id="mRD-7M-cNJ"/>
                                     <action selector="dateChanged:" destination="cwe-Lw-Ppp" eventType="valueChanged" id="XKP-B5-OiI"/>
                                 </connections>
                             </datePicker>
@@ -701,7 +703,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="euq-wx-Fnj">
-                                <rect key="frame" x="207" y="275" width="80" height="80"/>
+                                <rect key="frame" x="207" y="275" width="60" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -716,8 +718,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <segue destination="llW-UF-12E" kind="modal" identifier="addCommentSegue" modalTransitionStyle="flipHorizontal" id="eRw-NI-Hy6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Mzz-7b-lXD">
-                                <rect key="frame" x="207" y="275" width="80" height="80"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Mzz-7b-lXD">
+                                <rect key="frame" x="207" y="275" width="60" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" backgroundImage="paper.png">
@@ -783,11 +785,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="breedText" destination="MLR-Iw-pys" id="15H-dn-scJ"/>
                         <outlet property="dobPicker" destination="KEY-4G-GmP" id="sHB-T5-ovd"/>
                         <outlet property="dobText" destination="NmZ-Zq-JP3" id="Tke-Lg-poT"/>
-                        <outlet property="editComment" destination="Mzz-7b-lXD" id="FOI-1r-PHf"/>
+                        <outlet property="editComment" destination="Mzz-7b-lXD" id="6a5-Nc-HY2"/>
                         <outlet property="heightText" destination="6e8-F9-eRK" id="kiD-CB-Iyz"/>
                         <outlet property="nameText" destination="kt2-5a-Y0r" id="oyE-sn-eoC"/>
                         <outlet property="sexSegm" destination="yOd-PA-9Az" id="JRt-Di-0lk"/>
-                        <outlet property="writeComment" destination="euq-wx-Fnj" id="dha-fZ-Gxx"/>
+                        <outlet property="writeComment" destination="euq-wx-Fnj" id="mvS-TQ-v6a"/>
                     </connections>
                 </viewController>
             </objects>
@@ -1066,11 +1068,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addCommentButton" destination="OOd-XC-bLf" id="5Th-Tp-KeA"/>
+                        <outlet property="addCommentButton" destination="OOd-XC-bLf" id="Tpn-19-HCA"/>
                         <outlet property="clubText" destination="9gD-DG-KHo" id="a2Y-9p-ECa"/>
                         <outlet property="dogText" destination="49i-Jn-Fwi" id="OJB-dP-uty"/>
-                        <outlet property="editCommentButton" destination="1HY-0e-yBL" id="Jex-9a-M1f"/>
-                        <outlet property="eventDate" destination="eHy-My-ltW" id="Gld-YY-kid"/>
+                        <outlet property="editCommentButton" destination="1HY-0e-yBL" id="Bg2-UK-MyU"/>
+                        <outlet property="eventDate" destination="eHy-My-ltW" id="Z7v-xb-Mel"/>
                         <outlet property="eventText" destination="pgL-q1-an5" id="uzo-dt-6tJ"/>
                         <outlet property="isCompetitioSeg" destination="qps-Z7-l8N" id="JAq-eF-WAK"/>
                         <outlet property="levelsTable" destination="bEr-vx-gaK" id="iMW-vt-hwG"/>
@@ -1484,16 +1486,186 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="pen.png" width="60" height="70"/>
         <image name="questionmark.png" width="70" height="40"/>
     </resources>
+    <classes>
+        <class className="ITIAddDogViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIAddDogViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTouched:"/>
+                <relationship kind="action" name="dateChanged:"/>
+                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="save:"/>
+                <relationship kind="outlet" name="breedText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="dobPicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="dobText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="editComment" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="heightText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="nameText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="sexSegm" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="writeComment" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="ITIAddResultViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIAddResultViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTouched:"/>
+                <relationship kind="action" name="changeDogName:"/>
+                <relationship kind="action" name="dateChanged:"/>
+                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="addCommentButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="clubText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="dogPicker" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="dogText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="editCommentButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="eventDate" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="eventText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="isCompetitioSeg" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="levelTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="pickDate" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="placeText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="pointsText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="positionText" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ITIDogCommentViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIDogCommentViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="save:"/>
+                <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="commentText" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="ITIDogsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIDogsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dogsView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ITIEditDogViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIEditDogViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTouched:"/>
+                <relationship kind="action" name="dateChanged:"/>
+                <relationship kind="action" name="deleteDog:"/>
+                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="addComment" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="breedText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="dobPicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="dobText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="editComment" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="heightText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="resultsButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="save" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="sexSegm" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="ITIEditResultViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIEditResultViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTouched:"/>
+                <relationship kind="action" name="dateChanged:"/>
+                <relationship kind="action" name="deleteResult:"/>
+                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="addCommentButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="clubText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="dogText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="editCommentButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="eventDate" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="eventText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="isCompetitioSeg" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="levelsTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="pickDate" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="pickDog" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="placeText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="pointsText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="positionText" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ITILevelSettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITILevelSettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="outlet" name="levelPicker" candidateClass="UIPickerView"/>
+            </relationships>
+        </class>
+        <class className="ITIOrgSettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIOrgSettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="outlet" name="orgPicker" candidateClass="UIPickerView"/>
+            </relationships>
+        </class>
+        <class className="ITIRandomSignDetailController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIRandomSignDetailController.h"/>
+            <relationships>
+                <relationship kind="action" name="displaySign"/>
+                <relationship kind="action" name="getNext:"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="ITIResultsCommentViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIResultsCommentViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="save:"/>
+                <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="commentText" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="ITIResultsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIResultsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="resultsTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
+        <class className="ITISettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITISettingsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="levelField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="levelLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="orgField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="organisationLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ITISignCommentViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITISignCommentViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="closeDialog:"/>
+                <relationship kind="action" name="deleteComment:"/>
+                <relationship kind="action" name="saveComment:"/>
+                <relationship kind="outlet" name="commentText" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ITISignDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITISignDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="commentButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="descriptionText" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="ITISignsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITISignsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="signsTable" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="vFY-zg-FSk"/>
         <segue reference="QGg-Zm-D5P"/>
-        <segue reference="U5j-fl-RBI"/>
+        <segue reference="q9D-bN-WzB"/>
         <segue reference="RzE-ON-JCY"/>
+        <segue reference="ua3-DB-SCh"/>
         <segue reference="hX7-Un-grM"/>
         <segue reference="QQt-cj-3o3"/>
     </inferredMetricsTieBreakers>

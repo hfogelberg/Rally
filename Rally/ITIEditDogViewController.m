@@ -21,6 +21,7 @@
 @synthesize editComment;
 @synthesize addComment;
 @synthesize save;
+@synthesize commentView;
 
 // Save to Db.
 // Dismiss date picker and don't save if the date
@@ -82,11 +83,7 @@
 
 - (void)didReceiveMemoryWarning
 {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
+    [super didReceiveMemoryWarning];}
 
 // Make sure the correct comment icon is displayed
 - (void)viewDidAppear:(BOOL)animated{ 
@@ -182,10 +179,6 @@
 {
     [super viewDidUnload];
     
-    // Make sure there's no old comment still around;
-    ITIAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    delegate.comment = @" ";
-    
     self.dog = Nil;
     self.breedText = Nil;
     self.sexSegm = Nil;
@@ -195,6 +188,7 @@
     self.resultsButton = Nil;
     self.editComment = Nil;
     self.addComment = Nil;
+    self.commentView = Nil;
 }
 
 - (void)backgroundTouched:(id)sender{
@@ -219,12 +213,12 @@
         ITIResultsViewController *destination = segue.destinationViewController;
         destination.dogId = self.dog.id;
     }else if([[segue identifier] isEqualToString:@"addCommentSegue"]){
-        ITIDogCommentViewController *destination = segue.destinationViewController;
-        destination.dog = dog;
+         commentView = segue.destinationViewController;
         
     }else if([[segue identifier] isEqualToString:@"editCommentSegue"]){
-        ITIDogCommentViewController *destination = segue.destinationViewController;
-        destination.dog = dog; 
+        commentView = segue.destinationViewController;
+        commentView.dogId = dog.id;
+        commentView.comment = dog.comment;
     }
 }
 

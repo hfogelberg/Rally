@@ -29,6 +29,7 @@
 @synthesize dogId;
 @synthesize clubText;
 @synthesize eventText;
+@synthesize commentView;
 
 // Save the result to the database.
 // If the date picker or dog picker dismiss when the user taps save. 
@@ -39,16 +40,13 @@
         [self hideKeyboards];
     }else{
         if([dogText.text length]==0){
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"NAME", nil)                                                                             message:NSLocalizedString(@"NAME_USED", nil)
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"NAME", nil)                                                                                             
+                                                            message:NSLocalizedString(@"NAME_USED", nil)
                                                            delegate:nil 
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
             [alert show];
         }else{
-            ITIAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-            result.comment = delegate.comment;
-            delegate.comment = @" ";
-            
             NSIndexPath *selectedRowIndex = [levelTable indexPathForSelectedRow];
             ITILevel *selectedLevel = [levels objectAtIndex:selectedRowIndex.row];
             result.level = selectedLevel.code;
@@ -209,7 +207,6 @@
     pickDate.hidden = TRUE;
 }
 
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -221,18 +218,24 @@
 
 - (void)didReceiveMemoryWarning
 {
-    // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
-    // Release any cached data, images, etc that aren't in use.
+    self.dogs = Nil;
+    self.result = Nil;
+    self.levels = Nil;
 }
 
 // Make sure to refresh the dog picker when a new dog has been added.
 - (void)viewDidAppear:(BOOL)animated{
     [self getDogs];
-    
-    ITIAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    if([delegate.comment length]>0){
+
+    if(self.commentView != Nil){
+        if([self.commentView.comment length]>0){
+            NSLog(self.commentView.comment);
+            self.result.comment = self.commentView.comment;
+            NSLog(@"Add result viewDidAppear: %@", self.result.comment);        
+        }
+            
         self.addCommentButton.hidden = TRUE;
         self.editCommentButton.hidden = FALSE;
     }else{
@@ -249,6 +252,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    result = [[ITIResult alloc] init];
+    
     clubText.placeholder = NSLocalizedString(@"CLUB",nil);
     dogText.placeholder = NSLocalizedString(@"NAME", nil);
     eventDate.placeholder = NSLocalizedString(@"DATE", nil);
@@ -262,7 +267,7 @@
     
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
     self.view.backgroundColor = background;
-    
+   
     if(dogId > 0){
         ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
         selectedDog = [dataSource getDogById:dogId];
@@ -275,8 +280,6 @@
     
     [self getLevels];
 
-    self.result = [[ITIResult alloc] init];
-    
     NSDate *now = [NSDate date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy"];
@@ -361,16 +364,21 @@
     self.clubText = Nil;
 }
 
-- (void)viewDidDisappear:(BOOL)animated{
-    // Make sure there's no old comment still around;
-    ITIAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    delegate.comment = Nil;
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([[segue identifier] isEqualToString:@"addCommentSegue"]){
+        self.commentView = segue.destinationViewController;
+        
+    }else if([[segue identifier] isEqualToString:@"editCommentSegue"]){
+        self.commentView = segue.destinationViewController;
+        NSLog(@"Add result prepare for segue %@", self.result.comment);
+        commentView.comment = self.result.comment;
+    }
 }
 
 - (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)componen{        

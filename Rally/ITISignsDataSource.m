@@ -482,6 +482,11 @@
     }
 }
 
+-(void)saveDogComment: (int) dogId :(NSString *)comment{
+    NSLog(@"Save dog comment %d %@", dogId, comment);
+    NSString *updateSql = [NSString stringWithFormat:@"UPDATE Dogs SET comment = \"%@\" WHERE id=%d", comment, dogId];
+    [self update:updateSql];
+}
 
 - (BOOL)dogHasComment:(int)dogId{
     BOOL hasComment = NO;
@@ -849,8 +854,8 @@
     return [self doResultSearch:querySQL];
 }
 
-- (void)saveResultComment:(ITIResult *)result{
-    NSString *updateSql = [NSString stringWithFormat:@"UPDATE Results SET comment = \"%@\" WHERE id=%d", result.comment, result.id];
+- (void)saveResultComment:(NSString *)resultComment :(int) resultId{
+    NSString *updateSql = [NSString stringWithFormat:@"UPDATE Results SET comment = \"%@\" WHERE id=%d", resultComment, resultId];
     [self update:updateSql];
 }
 

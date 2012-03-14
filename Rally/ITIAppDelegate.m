@@ -9,7 +9,6 @@
 #import "ITIAppDelegate.h"
 
 @implementation ITIAppDelegate@synthesize window = _window;
-@synthesize comment;
 
 // Copy database to documentsdirectory on initialization
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

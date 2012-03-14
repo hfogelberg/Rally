@@ -11,7 +11,6 @@
 #import "ITISignsDataSource.h"
 #import "ITIResultsViewController.h"
 #import <QuartzCore/QuartzCore.h>
-#import "ITIAppDelegate.h"
 #import "ITIDogCommentViewController.h"
 
 @interface ITIEditDogViewController : UIViewController<UITextFieldDelegate, UITextViewDelegate, UIAlertViewDelegate>{
@@ -29,6 +28,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *editComment;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *save;
 @property (nonatomic, assign) BOOL editDate;
+@property (nonatomic, retain) ITIDogCommentViewController *commentView;
 
 - (IBAction) dateChanged:(id)sender;
 - (IBAction)done:(UIBarButtonItem *)sender;

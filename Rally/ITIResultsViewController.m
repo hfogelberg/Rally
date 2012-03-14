@@ -40,10 +40,8 @@
 
 - (void)didReceiveMemoryWarning
 {
-    // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
+    self.results = Nil;
 }
 
 // Set tab bar depending on localization

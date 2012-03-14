@@ -19,6 +19,8 @@
 @synthesize editDate;
 @synthesize writeComment;
 @synthesize editComment;
+@synthesize commentView;
+@synthesize dog;
 
 // Update the date label when date picker is changed
 - (void) dateChanged:(id)sender{
@@ -95,26 +97,20 @@
                                               otherButtonTitles:nil];
         [alert show];
     }else{
-        ITIDog *newDog = [[ITIDog alloc] init];
-    
-        ITIAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-        newDog.comment = delegate.comment;
-        delegate.comment = Nil;
+        dog.name = nameText.text;
+        dog.breed = breedText.text;
+        dog.dob = dobText.text;
+        dog.height = [heightText.text intValue];
+        dog.isMale = [sexSegm selectedSegmentIndex];
         
-        newDog.name = nameText.text;
-        newDog.breed = breedText.text;
-        newDog.dob = dobText.text;
-        newDog.height = [heightText.text intValue];
-        newDog.isMale = [sexSegm selectedSegmentIndex];
-        
-        if([newDog.breed length]==0){
-            newDog.breed = @" ";
+        if([dog.breed length]==0){
+            dog.breed = @" ";
         }
-        if([newDog.comment length]==0){
-            newDog.comment = @" ";
+        if([dog.comment length]==0){
+            dog.comment = @" ";
         }
 
-    [dataSource createDog:newDog];
+    [dataSource createDog:dog];
     }
 }
 
@@ -141,18 +137,15 @@
 
 // Make sure that the correct comment icon is displayed
 - (void)viewDidAppear:(BOOL)animated{
-    writeComment.hidden = FALSE;
-    editComment.hidden = TRUE;
-    
-    ITIAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    if(delegate.comment != nil){
-        NSString *trimmedComment = [delegate.comment stringByTrimmingCharactersInSet:
-                              [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
-        if([trimmedComment length]>0){
-            writeComment.hidden = TRUE;
-            editComment.hidden = FALSE;
-        }
+    if(commentView != Nil){
+        if([commentView.comment length]>0)
+            dog.comment = commentView.comment;
+        NSLog(@"Add dog viewDidAppear: %@", dog.comment);
+        self.writeComment.hidden = TRUE;
+        self.editComment.hidden = FALSE;
+    }else{
+        self.writeComment.hidden = FALSE;
+        self.editComment.hidden = TRUE;
     }
 }
 
@@ -161,6 +154,7 @@
 {
     [super viewDidLoad];
     
+    dog  = [[ITIDog alloc] init];
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
     self.view.backgroundColor = background;
     
@@ -185,6 +179,16 @@
     return YES;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([[segue identifier]isEqualToString:@"addCommentSegue"]){
+        commentView = segue.destinationViewController;
+    }else if([[segue identifier]isEqualToString:@"editCommentSegue"]){
+        commentView = segue.destinationViewController;
+        NSLog(@"Add dog. Prepare for Segue: %@",dog.comment);
+        commentView.comment = dog.comment;
+    }
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -195,12 +199,12 @@
     self.dobText = Nil;
     self.heightText = Nil;
     self.dobPicker = Nil;
+    self.dog = Nil;
+    self.commentView = Nil;
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
-    // Make sure there's no old comment still around;
-    ITIAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    delegate.comment = Nil;
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

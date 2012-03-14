@@ -28,6 +28,7 @@
 @synthesize levelsTable;
 @synthesize eventText;
 @synthesize clubText;
+@synthesize commentView;
 
 // Update the date label when date picker is changed
 - (void) dateChanged:(id)sender{
@@ -137,21 +138,21 @@
 
 - (void)didReceiveMemoryWarning
 {
-    // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
+    self.dogs = Nil;
+    self.result = Nil;
+    self.selectedDog = Nil;
+    self.levels = Nil;
 }
 
 // Make sure the correct comment icon is displayed
 - (void)viewDidAppear:(BOOL)animated{
-    ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
-    if([dataSource resultHasComment:result.id] ==YES){
-        addCommentButton.hidden = TRUE;
-        editCommentButton.hidden = FALSE;
-    }else{
-        addCommentButton.hidden = FALSE;
-        editCommentButton.hidden = TRUE;
+    if(self.commentView != Nil){
+        if([self.commentView.comment length]>0){
+            self.result.comment = self.commentView.comment;
+        }
+        self.addCommentButton.hidden = TRUE;
+        self.editCommentButton.hidden = FALSE;
     }
 }
 
@@ -202,6 +203,14 @@
     
     NSString *title =  [NSString stringWithFormat:@"%@ %@ %@", self.result.dog_name, self.result.place, self.result.event_date];
     self.navigationItem.title = title; 
+    
+    if([self.result.comment length]>0){
+        self.editCommentButton.hidden = FALSE;
+        self.addCommentButton.hidden = TRUE;
+    }else{
+        self.addCommentButton.hidden = TRUE;
+        self.editCommentButton.hidden = FALSE;
+    }
     
     dogText.delegate = self;
     eventDate.delegate = self;
@@ -271,10 +280,6 @@
     if(editDate == YES){
         [self hideKeyboards];
     }else{
-        ITIAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-        result.comment = delegate.comment;
-        delegate.comment = @" ";
-        
         NSDate *date = [pickDate date];
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"yyyy-MM-dd"];
@@ -299,6 +304,7 @@
         }else{
             result.club = @" ";
         }
+        
         NSIndexPath *selectedRowIndex = [levelsTable indexPathForSelectedRow];
         ITILevel *selectedLevel = [levels objectAtIndex:selectedRowIndex.row];
         result.level = selectedLevel.code;
@@ -313,10 +319,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    
-    // Make sure there's no old comment still around;
-    ITIAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    delegate.comment = @" ";
     
     self.dogs = Nil;
     self.result = Nil;
@@ -369,11 +371,11 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([[segue identifier] isEqualToString:@"editCommentSegue"]){
-        ITIResultsCommentViewController *destination = segue.destinationViewController;
-        destination.result = self.result;
+        commentView = segue.destinationViewController;
+        commentView.resultId = result.id;
+        commentView.comment = result.comment;
     }else if([[segue identifier] isEqualToString:@"addCommentSegue"]){
-        ITIResultsCommentViewController *destination = segue.destinationViewController;
-        destination.result = self.result;
+        commentView = segue.destinationViewController;
     }
 }
 

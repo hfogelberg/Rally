@@ -13,7 +13,8 @@
 @synthesize saveButton;
 @synthesize cancelButton;
 @synthesize commentText;
-@synthesize dog;
+@synthesize dogId;
+@synthesize comment;
 
 // Resize the text wiew when editing begins
 - (void)textViewDidBeginEditing:(UITextView *)textView{
@@ -25,6 +26,7 @@
 }
 
 -(void)cancel:(id)sender{
+    self.commentText.text = @"";
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -32,15 +34,12 @@
 // Oterwise save the comment in the app delegate.
 - (void)save:(id)sender{
     
-    if(dog.id>0){
+    comment = commentText.text;
+    if(dogId>0){
         ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
-        dog.comment = commentText.text;
-        [dataSource addDogComment:dog];
-    }else{
-        ITIAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-        delegate.comment = commentText.text;
+        NSLog(@"Save comment %d %@", dogId, comment);
+        [dataSource saveDogComment:dogId :comment];
     }
-    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -48,7 +47,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        // Custom initialization	
     }
     return self;
 }
@@ -57,7 +56,7 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
+    comment = Nil;
     // Release any cached data, images, etc that aren't in use.
 }
 
@@ -66,16 +65,18 @@
     [super viewDidLoad];
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
     self.view.backgroundColor = background;
-    
-    ITIAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    
-    if(dog){
-        self.commentText.text = dog.comment;
-    }else if(delegate.comment){
-        self.commentText.text = delegate.comment;
-    }
+       
     
     self.commentText.delegate = self;
+    
+    if(dogId>0){
+        ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
+        ITIDog *dog = [dataSource getDogById:dogId];
+        comment = dog.comment;
+    }
+        
+    NSLog(@"Dog comment loading: %@", comment);    
+    self.commentText.text = comment;
     
     // Make a border around the comment text area.
     [[self.commentText layer] setBorderColor:[[UIColor grayColor] CGColor]];
@@ -89,7 +90,6 @@
     self.saveButton = Nil;
     self.cancelButton = Nil;
     self.commentText = Nil;
-    self.dog = Nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

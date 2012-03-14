@@ -28,10 +28,10 @@
 
 - (void)didReceiveMemoryWarning
 {
-    // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
+    self.sign = Nil;
+    self.imageView.image = Nil;
+    self.signComment = Nil;
 }
 
 // Make sure the correct comment butt on is displaye

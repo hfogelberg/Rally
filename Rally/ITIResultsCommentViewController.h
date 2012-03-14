@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "ITIResult.h"
-#import "ITIAppDelegate.h"
 #import "ITISignsDataSource.h"
 
 @interface ITIResultsCommentViewController : UIViewController<UITextViewDelegate>
@@ -17,7 +16,8 @@
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *saveButton;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *cancelButton;
 @property (nonatomic, retain) IBOutlet UITextView *commentText;
-@property (nonatomic, retain) ITIResult *result;
+@property (nonatomic, assign) int resultId;
+@property (nonatomic, retain) NSString *comment;
 
 - (IBAction)cancel:(id)sender;
 - (IBAction)save:(id)sender;
