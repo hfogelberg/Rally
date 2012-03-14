@@ -445,6 +445,11 @@
 }
 
 // Dog
+- (void)deleteDogComment:(int)dogId{
+    NSString *updateSql = [NSString stringWithFormat:@"UPDATE Dogs Set comment = \" \" WHERE id=%d", dogId];
+    [self delete:updateSql];
+}
+
 - (ITIDog *)getDogById:(int)dogId{
     ITIDog *dog;
     
@@ -528,7 +533,7 @@
 }
 
 - (void) updateDog: (ITIDog *) changedDog{
-    NSString *updateSql = [NSString stringWithFormat: @"UPDATE Dogs SET breed=\"%@\", is_male=%d, dob=\"%@\", comment=\"%@\", height=%d WHERE id=%d", changedDog.breed, changedDog.isMale, changedDog.dob, changedDog.comment, changedDog.height, changedDog.id];
+    NSString *updateSql = [NSString stringWithFormat: @"UPDATE Dogs SET breed=\"%@\", is_male=%d, dob=\"%@\", height=%d WHERE id=%d", changedDog.breed, changedDog.isMale, changedDog.dob, changedDog.height, changedDog.id];
     [self update:updateSql];
 }
 
@@ -628,6 +633,40 @@
     [self delete:deleteSql];
 }
 
+- (void) deleteResultComment:(int)resultId{
+    NSString *updateSql = [NSString stringWithFormat:@"UPDATE Results SET comment = \" \" WHERE id=%d", resultId];
+    [self update:updateSql];
+}
+
+- (NSString *)getResultComment:(int)resultId{
+    NSString *comment;
+    @try{
+        
+        [self connectToDb];
+        const char *dbpath = [databasePath UTF8String];
+        if (sqlite3_open(dbpath, &rallyDb) == SQLITE_OK){
+            NSString *selectSQL  = [NSString stringWithFormat:@"SELECT comment FROM Results WHERE id = %d", resultId];
+            const char *sql = [selectSQL UTF8String];
+            sqlite3_stmt *sqlStatement;
+            if(sqlite3_prepare(rallyDb, sql, -1, &sqlStatement, NULL) != SQLITE_OK){
+                NSLog(@"Problem with prepare statement");
+            }     
+            
+            while (sqlite3_step(sqlStatement)==SQLITE_ROW) {
+                comment = [[NSString alloc] initWithUTF8String:(const char *)sqlite3_column_text(sqlStatement, 0)];
+            }
+        }else{
+            NSLog(@"Cannot locate database file '%@'.", databasePath);
+        }
+    }
+    @catch (NSException *exception) {
+        NSLog(@"An exception occured: %@", [exception reason]);
+    }
+    @finally {
+        return comment;
+    }    
+}
+
 - (BOOL)resultHasComment:(int)resultId{
     BOOL hasComment = NO;
     @try{
@@ -663,7 +702,7 @@
 }
 
 - (void) updateResults: (ITIResult *) changedResult{
-    NSString *updateSQL = [NSString stringWithFormat: @"UPDATE Results SET place = \"%@\", event_date=\"%@\", is_competition=%d, level=%d, comment=\"%@\", result=%d, dog_id=%d, position=%d, event = \"%@\", club = \"%@\" WHERE id=%d", changedResult.place, changedResult.event_date, changedResult.is_competition, changedResult.level, changedResult.comment, changedResult.points, changedResult.dog_id, changedResult.position,  changedResult.event, changedResult.club, changedResult.id]; 
+    NSString *updateSQL = [NSString stringWithFormat: @"UPDATE Results SET place = \"%@\", event_date=\"%@\", is_competition=%d, level=%d, result=%d, dog_id=%d, position=%d, event = \"%@\", club = \"%@\" WHERE id=%d", changedResult.place, changedResult.event_date, changedResult.is_competition, changedResult.level, changedResult.points, changedResult.dog_id, changedResult.position,  changedResult.event, changedResult.club, changedResult.id]; 
     [self update:updateSQL];
 }
 
@@ -756,7 +795,7 @@
             if([clubs count] > 0) 
             {   
                 NSLog(@"Param %d %@ is a club. Add to param list", i, param);
-                queryParam = [queryParam stringByAppendingFormat:@" AND Results.club LIKE '%%%@%%'", param];   
+                queryParam = [queryParam stringByAppendingFormat:@" AND club LIKE '%%%@%%'", param];   
             }else{
                 NSLog(@"Param %@ is not a club", param);
             }
@@ -850,7 +889,7 @@
 }
 
 - (NSMutableArray *)getResultsForDog:(int)dogId{
-    NSString *querySQL = [NSString stringWithFormat:@"SELECT place, event_date, is_competition, level, Results.comment, result, name, dog_id, Results.id, position, club, event  FROM Results, Dogs WHERE Results.Dog_id = Dogs.id AND Dogs.id = %d ORDER by Results.Dog_id, event_date DESC", dogId];
+    NSString *querySQL = [NSString stringWithFormat:@"SELECT place, event_date, is_competition, level, Results.comment, result, name, dog_id, Results.id, position, Results.club, event  FROM Results, Dogs WHERE Results.Dog_id = Dogs.id AND Dogs.id = %d ORDER by Results.Dog_id, event_date DESC", dogId];
     return [self doResultSearch:querySQL];
 }
 

@@ -87,6 +87,9 @@
 
 // Make sure the correct comment icon is displayed
 - (void)viewDidAppear:(BOOL)animated{ 
+    if (commentView != nil)
+        self.dog.comment = commentView.comment;
+    
     ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
     if([dataSource dogHasComment:dog.id]==YES){
         editComment.hidden = FALSE;
@@ -213,8 +216,8 @@
         ITIResultsViewController *destination = segue.destinationViewController;
         destination.dogId = self.dog.id;
     }else if([[segue identifier] isEqualToString:@"addCommentSegue"]){
-         commentView = segue.destinationViewController;
-        
+        commentView = segue.destinationViewController;
+        commentView.dogId = dog.id;
     }else if([[segue identifier] isEqualToString:@"editCommentSegue"]){
         commentView = segue.destinationViewController;
         commentView.dogId = dog.id;

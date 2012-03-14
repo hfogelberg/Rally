@@ -376,7 +376,7 @@
                                 </date>
                                 <locale key="locale" localeIdentifier="en_US"/>
                                 <timeZone key="timeZone" name="America/Los_Angeles">
-                                    <mutableData key="data">
+                                    <data key="data">
 VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
 y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
 5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
@@ -394,7 +394,7 @@ f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
-</mutableData>
+</data>
                                 </timeZone>
                                 <connections>
                                     <action selector="dateChanged:" destination="cwe-Lw-Ppp" eventType="valueChanged" id="XKP-B5-OiI"/>
@@ -1025,7 +1025,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </date>
                                 <locale key="locale" localeIdentifier="en_US"/>
                                 <timeZone key="timeZone" name="America/Los_Angeles">
-                                    <mutableData key="data">
+                                    <data key="data">
 VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
 y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
 5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
@@ -1043,8 +1043,11 @@ f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
-</mutableData>
+</data>
                                 </timeZone>
+                                <connections>
+                                    <action selector="dateChanged:" destination="MTG-SE-XE7" eventType="valueChanged" id="U7M-bC-dfD"/>
+                                </connections>
                             </datePicker>
                             <pickerView contentMode="scaleToFill" id="Ats-5n-lga">
                                 <rect key="frame" x="0.0" y="43" width="320" height="216"/>
@@ -1159,14 +1162,19 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Spara" id="43T-zI-SOR">
+                                    <barButtonItem systemItem="save" id="43T-zI-SOR">
                                         <connections>
                                             <action selector="save:" destination="dWZ-JZ-2wW" id="oJ8-2E-6we"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Stäng" id="A8a-D4-8UY">
+                                    <barButtonItem systemItem="done" id="A8a-D4-8UY">
                                         <connections>
                                             <action selector="cancel:" destination="dWZ-JZ-2wW" id="O16-kF-3a0"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="trash" id="p0I-pL-RWF">
+                                        <connections>
+                                            <action selector="deleteComment:" destination="dWZ-JZ-2wW" id="3gU-lY-FG0"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -1262,17 +1270,17 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Avbryt" id="set-C9-5Gy">
-                                        <connections>
-                                            <action selector="closeDialog:" destination="6mH-X2-cpZ" id="PeE-G9-AFN"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="Spara" id="vLD-NR-pKl">
+                                    <barButtonItem systemItem="save" id="vLD-NR-pKl">
                                         <connections>
                                             <action selector="saveComment:" destination="6mH-X2-cpZ" id="KNR-ec-y75"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Ta bort" id="jD0-bf-LOa">
+                                    <barButtonItem systemItem="done" id="set-C9-5Gy">
+                                        <connections>
+                                            <action selector="closeDialog:" destination="6mH-X2-cpZ" id="PeE-G9-AFN"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="trash" id="jD0-bf-LOa">
                                         <connections>
                                             <action selector="deleteComment:" destination="6mH-X2-cpZ" id="ifv-WC-646"/>
                                         </connections>
@@ -1441,14 +1449,19 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Spara" id="N0J-Kh-isc">
+                                    <barButtonItem systemItem="save" id="N0J-Kh-isc">
                                         <connections>
                                             <action selector="save:" destination="llW-UF-12E" id="3du-en-iFK"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Stäng" id="nfU-Iw-T1n">
+                                    <barButtonItem systemItem="done" id="nfU-Iw-T1n">
                                         <connections>
                                             <action selector="cancel:" destination="llW-UF-12E" id="Gek-bY-PjB"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="trash" id="iQI-85-hbB">
+                                        <connections>
+                                            <action selector="deleteComment:" destination="llW-UF-12E" id="Rxt-nR-t0d"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -1530,6 +1543,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIDogCommentViewController.h"/>
             <relationships>
                 <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="deleteComment:"/>
                 <relationship kind="action" name="save:"/>
                 <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="commentText" candidateClass="UITextView"/>
@@ -1610,6 +1624,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIResultsCommentViewController.h"/>
             <relationships>
                 <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="deleteComment:"/>
                 <relationship kind="action" name="save:"/>
                 <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="commentText" candidateClass="UITextView"/>
@@ -1662,11 +1677,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="vFY-zg-FSk"/>
         <segue reference="QGg-Zm-D5P"/>
-        <segue reference="q9D-bN-WzB"/>
         <segue reference="RzE-ON-JCY"/>
-        <segue reference="ua3-DB-SCh"/>
-        <segue reference="hX7-Un-grM"/>
+        <segue reference="jSM-Co-WUv"/>
         <segue reference="QQt-cj-3o3"/>
+        <segue reference="hX7-Un-grM"/>
     </inferredMetricsTieBreakers>
 </document>

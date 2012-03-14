@@ -68,13 +68,7 @@
         [self hideKeyboards];
     }else{
         [self saveDog];
-        [self.navigationController  popViewControllerAnimated:YES];
     }
-}
-
-- (void)save:(id)sender{
-    [self saveDog];
-    [self dismissModalViewControllerAnimated:YES]; 
 }
 
 // Validate and save
@@ -110,7 +104,8 @@
             dog.comment = @" ";
         }
 
-    [dataSource createDog:dog];
+        [dataSource createDog:dog];
+        [self.navigationController  popViewControllerAnimated:YES];
     }
 }
 

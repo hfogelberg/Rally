@@ -34,11 +34,20 @@
     
     self.comment = self.commentText.text;
     NSLog(@"Add result comment %@", self.comment);
-    if(resultId>0){
+    if(self.resultId>0){
         ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
-        [dataSource saveResultComment :self.comment :resultId];
+        [dataSource saveResultComment :self.comment :self.resultId];
     }
     
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)deleteComment:(id)sender{
+    self.comment = nil;
+    if(resultId>0){
+        ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
+        [dataSource deleteResultComment:resultId];
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -62,9 +71,16 @@
     [super viewDidLoad];
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
     self.view.backgroundColor = background;
+
+    self.commentText.delegate = self;
+    
+    if(self.resultId>0){
+        ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
+        self.comment = [dataSource getResultComment:self.resultId];
+    }
+    
     NSLog(@"Result comment loaded %@", self.comment);
     self.commentText.text = self.comment;
-    self.commentText.delegate = self;
     
     // Make a border around the comment text area.
     [[self.commentText layer] setBorderColor:[[UIColor grayColor] CGColor]];

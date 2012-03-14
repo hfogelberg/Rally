@@ -69,11 +69,11 @@
             result.position = [position intValue];
             result.event_date = dateString;
             result.is_competition =[isCompetitioSeg selectedSegmentIndex];
-            if([eventText.text length]==0)
+            if([eventText.text isEqual: [NSNull null]])
                 result.event = @" ";
             else    
                 result.event = eventText.text;
-            if([clubText.text length]==0)
+            if([clubText.text isEqual: [NSNull null]])
                 result.club = @" ";
             else
                 result.club = clubText.text;
@@ -231,7 +231,6 @@
 
     if(self.commentView != Nil){
         if([self.commentView.comment length]>0){
-            NSLog(self.commentView.comment);
             self.result.comment = self.commentView.comment;
             NSLog(@"Add result viewDidAppear: %@", self.result.comment);        
         }

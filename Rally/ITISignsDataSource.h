@@ -44,6 +44,7 @@
 - (BOOL) dogHasComment: (int) dogId;
 - (ITIDog *) getDogById: (int) dogId;
 - (void) saveDogComment: (int) dogId :(NSString *)comment;
+- (void) deleteDogComment: (int) dogId;
 
 // Results
 - (NSMutableArray *) getResults;
@@ -56,6 +57,8 @@
 - (void) saveResultComment: (NSString *) commentText :(int) resultId;
 - (void) deleteResultsForDog: (int) dogId;
 - (BOOL) resultHasComment: (int) resultId;
+- (void) deleteResultComment: (int)resultId;
+- (NSString *) getResultComment: (int)resultId;
 
 // Settings
 - (ITISettings *) getSettings;

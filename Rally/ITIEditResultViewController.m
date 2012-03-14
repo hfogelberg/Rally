@@ -42,8 +42,6 @@
     NSString *day = [formatter stringFromDate:pickerDate];
     eventDate.text = [[NSString alloc] initWithFormat:@"%@-%@-%@", year, month, day];
     result.event_date = eventDate.text;
-    
-    [self hideKeyboards];
 }
 
 - (void) backgroundTouched:(id)sender{
@@ -147,13 +145,22 @@
 
 // Make sure the correct comment icon is displayed
 - (void)viewDidAppear:(BOOL)animated{
-    if(self.commentView != Nil){
-        if([self.commentView.comment length]>0){
-            self.result.comment = self.commentView.comment;
-        }
-        self.addCommentButton.hidden = TRUE;
+    ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
+    if([dataSource resultHasComment:result.id]==YES){
         self.editCommentButton.hidden = FALSE;
+        self.addCommentButton.hidden = TRUE;
+    }else{
+        self.addCommentButton.hidden = FALSE;
+        self.editCommentButton.hidden = TRUE;
     }
+    
+//    if(self.commentView != Nil){
+//        if([self.commentView.comment length]>0){
+//            self.result.comment = self.commentView.comment;
+//        }
+//        self.addCommentButton.hidden = TRUE;
+//        self.editCommentButton.hidden = FALSE;
+//    }
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -182,7 +189,9 @@
                               [NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSString *trimmedEvent = [result.event stringByTrimmingCharactersInSet:
                               [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-
+    NSString *trimmedComment = [result.comment stringByTrimmingCharactersInSet:
+                              [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
     dogText.text = self.result.dog_name;
     if([trimmedPlace length]>0)
         placeText.text = self.result.place;
@@ -204,12 +213,12 @@
     NSString *title =  [NSString stringWithFormat:@"%@ %@ %@", self.result.dog_name, self.result.place, self.result.event_date];
     self.navigationItem.title = title; 
     
-    if([self.result.comment length]>0){
+    if([trimmedComment length]>0){
         self.editCommentButton.hidden = FALSE;
         self.addCommentButton.hidden = TRUE;
     }else{
-        self.addCommentButton.hidden = TRUE;
-        self.editCommentButton.hidden = FALSE;
+        self.editCommentButton.hidden = TRUE;
+        self.addCommentButton.hidden = FALSE;
     }
     
     dogText.delegate = self;
@@ -223,6 +232,8 @@
     [[self.levelsTable layer] setBorderColor:[[UIColor grayColor] CGColor]];
     [[self.levelsTable layer] setBorderWidth:2.3];
     [[self.levelsTable layer] setCornerRadius:15];
+    
+    [self hideKeyboards];
 }
 
 - (void)getDogs{
@@ -294,6 +305,7 @@
         result.points = [points intValue];
         result.position = [position intValue];
         result.event_date = dateString;
+        result.is_competition =[isCompetitioSeg selectedSegmentIndex];
         if([eventText.text length]>0){
             result.event = eventText.text;
         }else{
@@ -370,12 +382,13 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    NSLog(@"Result id %d", self.result.id);
     if([[segue identifier] isEqualToString:@"editCommentSegue"]){
         commentView = segue.destinationViewController;
-        commentView.resultId = result.id;
-        commentView.comment = result.comment;
+        commentView.resultId = self.result.id;
     }else if([[segue identifier] isEqualToString:@"addCommentSegue"]){
         commentView = segue.destinationViewController;
+        commentView.resultId = self.result.id;
     }
 }
 

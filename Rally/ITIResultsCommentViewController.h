@@ -21,4 +21,5 @@
 
 - (IBAction)cancel:(id)sender;
 - (IBAction)save:(id)sender;
+- (IBAction)deleteComment:(id)sender;
 @end

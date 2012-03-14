@@ -35,10 +35,19 @@
 - (void)save:(id)sender{
     
     comment = commentText.text;
-    if(dogId>0){
+    if(self.dogId>0){
         ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
-        NSLog(@"Save comment %d %@", dogId, comment);
-        [dataSource saveDogComment:dogId :comment];
+        NSLog(@"Save comment %d %@", self.dogId, comment);
+        [dataSource saveDogComment:self.dogId :comment];
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)deleteComment:(id)sender{
+    self.comment = nil;
+    if(self.dogId>0){
+        ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
+        [dataSource deleteDogComment:dogId];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -69,7 +78,7 @@
     
     self.commentText.delegate = self;
     
-    if(dogId>0){
+    if(self.dogId>0){
         ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
         ITIDog *dog = [dataSource getDogById:dogId];
         comment = dog.comment;
