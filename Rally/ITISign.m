@@ -13,9 +13,11 @@
 @synthesize id;
 @synthesize header;
 @synthesize body;
-@synthesize image;
+@synthesize imageStart;
 @synthesize thumb;
 @synthesize level;
 @synthesize organisation;
+@synthesize imageOrderId;
+@synthesize signFile;
 
 @end

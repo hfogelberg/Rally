@@ -117,8 +117,8 @@
     }
 
     ITISign *sign = [self.signs objectAtIndex:indexPath.row];
-    cell.textLabel.text = [sign header];    
-    cell.imageView.image = [sign thumb];
+    cell.textLabel.text = [sign header];   
+    cell.imageView.image = [UIImage imageNamed:sign.thumb];
     cell.imageView.layer.masksToBounds = YES;
     cell.imageView.layer.cornerRadius = 5.0;
     cell.detailTextLabel.text = [sign body];

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ITIDog : UIViewController
+@interface ITIDog : NSObject
 
 @property (nonatomic, assign) int id;
 @property (nonatomic, retain) NSString *name;

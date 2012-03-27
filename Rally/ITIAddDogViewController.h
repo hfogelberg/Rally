@@ -30,6 +30,7 @@
 - (IBAction) dateChanged:(id)sender;
 - (IBAction)done:(UIBarButtonItem *)sender;
 - (IBAction)backgroundTouched:(id)sender;
+- (IBAction)save:(id)sender;
 - (void) hideKeyboards;
 - (IBAction)save:(id)sender;
 - (void) saveDog;

@@ -14,5 +14,6 @@
 @synthesize levelCode;
 @synthesize levelDescription;
 @synthesize isFirstRun;
+@synthesize version;
 
 @end

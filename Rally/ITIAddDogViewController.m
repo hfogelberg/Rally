@@ -68,7 +68,15 @@
         [self hideKeyboards];
     }else{
         [self saveDog];
+        [self.navigationController  popViewControllerAnimated:YES];
     }
+}
+
+// Called when Save-button in panel is pushed.
+// Only used if user is trying to add a a result before a dog is defined.
+- (void)save:(id)sender{
+    [self saveDog];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 // Validate and save
@@ -105,7 +113,6 @@
         }
 
         [dataSource createDog:dog];
-        [self.navigationController  popViewControllerAnimated:YES];
     }
 }
 
@@ -132,10 +139,16 @@
 
 // Make sure that the correct comment icon is displayed
 - (void)viewDidAppear:(BOOL)animated{
+    BOOL hasComment = FALSE;
+    
     if(commentView != Nil){
-        if([commentView.comment length]>0)
-            dog.comment = commentView.comment;
-        NSLog(@"Add dog viewDidAppear: %@", dog.comment);
+        if(commentView.comment != Nil)
+        {    dog.comment = commentView.comment;
+            hasComment = TRUE;
+        }
+    }
+        
+    if(hasComment == TRUE){
         self.writeComment.hidden = TRUE;
         self.editComment.hidden = FALSE;
     }else{
@@ -179,7 +192,6 @@
         commentView = segue.destinationViewController;
     }else if([[segue identifier]isEqualToString:@"editCommentSegue"]){
         commentView = segue.destinationViewController;
-        NSLog(@"Add dog. Prepare for Segue: %@",dog.comment);
         commentView.comment = dog.comment;
     }
 }

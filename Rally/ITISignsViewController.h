@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ITISignsDataSource.h"
 #import "ITISignDetailViewController.h"
+#import "ITIImageStore.h"
 
 @interface ITISignsViewController : UITableViewController{
     NSMutableArray *signs;

@@ -229,12 +229,16 @@
 - (void)viewDidAppear:(BOOL)animated{
     [self getDogs];
 
-    if(self.commentView != Nil){
-        if([self.commentView.comment length]>0){
-            self.result.comment = self.commentView.comment;
-            NSLog(@"Add result viewDidAppear: %@", self.result.comment);        
+    BOOL hasComment = FALSE;
+    
+    if(commentView != Nil){
+        if(commentView.comment != Nil)
+        {    result.comment = commentView.comment;
+            hasComment = TRUE;
         }
-            
+    }
+    
+    if(hasComment == TRUE){
         self.addCommentButton.hidden = TRUE;
         self.editCommentButton.hidden = FALSE;
     }else{
@@ -375,7 +379,6 @@
         
     }else if([[segue identifier] isEqualToString:@"editCommentSegue"]){
         self.commentView = segue.destinationViewController;
-        NSLog(@"Add result prepare for segue %@", self.result.comment);
         commentView.comment = self.result.comment;
     }
 }

@@ -382,7 +382,6 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    NSLog(@"Result id %d", self.result.id);
     if([[segue identifier] isEqualToString:@"editCommentSegue"]){
         commentView = segue.destinationViewController;
         commentView.resultId = self.result.id;

@@ -14,4 +14,6 @@
 @property (nonatomic, assign) int levelCode;
 @property (nonatomic, retain) NSString *levelDescription;
 @property (nonatomic, assign) BOOL isFirstRun;
+@property (nonatomic, assign) NSDecimal *version;
+
 @end

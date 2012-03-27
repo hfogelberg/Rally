@@ -25,8 +25,9 @@
 
 }
 
--(void)cancel:(id)sender{
-    self.commentText.text = @"";
+-(void)cancel:(id)sender{    
+    commentText.text = @"";
+    comment = Nil;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -37,7 +38,6 @@
     comment = commentText.text;
     if(self.dogId>0){
         ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
-        NSLog(@"Save comment %d %@", self.dogId, comment);
         [dataSource saveDogComment:self.dogId :comment];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -45,6 +45,7 @@
 
 - (void)deleteComment:(id)sender{
     self.comment = nil;
+    self.commentText.text = @"";
     if(self.dogId>0){
         ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
         [dataSource deleteDogComment:dogId];
@@ -84,7 +85,6 @@
         comment = dog.comment;
     }
         
-    NSLog(@"Dog comment loading: %@", comment);    
     self.commentText.text = comment;
     
     // Make a border around the comment text area.

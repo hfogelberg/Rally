@@ -15,6 +15,9 @@
 @synthesize imageView;
 @synthesize commentButton;
 @synthesize signComment;
+@synthesize signs;
+@synthesize signId;
+@synthesize imageScroll;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -29,20 +32,18 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    NSLog(@"Memory warning");
     self.sign = Nil;
-    self.imageView.image = Nil;
     self.signComment = Nil;
 }
 
-// Make sure the correct comment butt on is displaye
-- (void) viewWillAppear:(BOOL)animated{
-    [self displaySign];
+- (void)viewDidAppear:(BOOL)animated{
+    [self getSignComment];
 }
 
 // Display corret button depending on if the sign has a comment or not.
 - (void)getSignComment{
     ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
-    NSLog(@"Sign id %d", sign.id);
     signComment = [dataSource getSignComment:sign.id];
     if(signComment == nil){
         commentButton.image = [UIImage imageNamed:@"toolpen.png"];
@@ -55,16 +56,20 @@
 - (void)displaySign{
     self.navigationItem.title = self.sign.header;
     self.descriptionText.text = self.sign.body;
-    self.imageView.image = self.sign.image;
-    self.imageView.layer.masksToBounds = YES;
-    self.imageView.layer.cornerRadius = 5.0;
-    
+    int imageStart = (self.sign.imageOrderId * 220) - 220;
+   
+    CGPoint offSet = CGPointMake(0, imageStart);
+    [imageScroll setContentOffset:offSet];    
     [self getSignComment];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad]; 
+    NSLog(@"View did load");
+    //NSString *imageFile = [[ITIImageStore sharedInstance] image];
+    //NSLog(@"Image file %@", imageFile);
+
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
     self.view.backgroundColor = background;
     
@@ -77,29 +82,46 @@
     swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeDetectedRight:)];
     swipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:swipeRecognizer];
+    
+    self.imageView.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.sign.signFile ofType:nil]];
+    
+    self.imageScroll.contentSize = CGSizeMake(320, 10000);
+    self.imageScroll.layer.masksToBounds = YES;
+    self.imageScroll.layer.cornerRadius = 5.0;
+    
+   [self displaySign];
 }
 
 - (IBAction)swipeDetectedLeft:(UIGestureRecognizer *)sender {    
+   
     ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
-    self.sign = [dataSource getNextSign:sign.id];
+    int id = self.sign.imageOrderId;
+    self.sign = Nil;
+    self.signComment = Nil;
+    self.sign = [dataSource getNextSign:id];
     [self displaySign];
+
 }
 
 - (IBAction)swipeDetectedRight:(UIGestureRecognizer *)sender {    
+
     ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
-    self.sign = [dataSource getPreviousSign:sign.id];
+    int id = self.sign.imageOrderId;
+    self.sign = Nil;
+    self.signComment = Nil;
+    self.sign = [dataSource getPreviousSign:id];
+    dataSource = nil;
     [self displaySign];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    
     self.sign = Nil;
     self.descriptionText = Nil;
     self.imageView = Nil;
-    self.signComment = Nil;
     self.commentButton = Nil;
+    self.signComment = Nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -115,7 +137,6 @@
         if(signComment != nil)
             destination.comment = signComment;
     }
-    
 }
 
 @end

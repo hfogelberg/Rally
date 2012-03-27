@@ -17,7 +17,6 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
-    NSLog(@"Search");
     NSString *searchParams = self.searchBar.text;
     results = [dataSource searchResults:searchParams :dogId];
     [self.resultsTable reloadData];
@@ -25,6 +24,7 @@
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    self.searchBar.text = @"";
     [self.searchBar resignFirstResponder];
     [self populateDataSource];
 }

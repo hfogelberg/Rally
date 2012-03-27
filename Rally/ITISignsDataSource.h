@@ -15,14 +15,9 @@
 #import "ITILevel.h"
 #import "ITISignComment.h"
 #import "ITIOrganisation.h"
+#import "ITIAppDelegate.h"
 
-@interface ITISignsDataSource : NSObject{
-    sqlite3 *rallyDb;
-    NSString *datasePath;
-}
-
-@property (nonatomic, assign) sqlite3 *rallyDb;
-@property (nonatomic, retain) NSString *databasePath;
+@interface ITISignsDataSource : NSObject
 
 // Signs
 - (NSMutableArray *) getSigns;
@@ -31,6 +26,7 @@
 - (ITISign *) getPreviousSign: (int) currentSign;
 - (ITISign *) getFirstSign;
 - (ITISign *) getLastSign;
+- (ITISign *) getSignBase: (NSString *) querySql;
 
 // Dogs
 - (NSMutableArray *) getDogs;
@@ -82,7 +78,6 @@
 - (NSMutableArray *) getOrganisations;
 
 // Generic
-- (void) connectToDb;
 - (void) create: (NSString *) sqlCreate;
 - (void) update: (NSString *) sqlUpdate;
 - (void) delete: (NSString *) sqlDelete;

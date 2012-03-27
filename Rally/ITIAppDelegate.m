@@ -8,14 +8,29 @@
 
 #import "ITIAppDelegate.h"
 
-@implementation ITIAppDelegate@synthesize window = _window;
+@implementation ITIAppDelegate
+@synthesize window = _window;
+@synthesize rallyDb;
 
 // Copy database to documentsdirectory on initialization
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self copyDatabase];
+    [self setRallyDb];
     return YES;
 }
+
+- (void) setRallyDb{
+        
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *databasePath = [documentsDirectory stringByAppendingPathComponent:@"Rally.sqlite"];  
+    const char *dbpath = [databasePath UTF8String];
+    int con = sqlite3_open(dbpath, &rallyDb);
+        
+    NSLog(@"Connection code: %d", con);
+}
+
 
 // Copy database to do documents folder if it isn't already done
 - (void) copyDatabase{
@@ -32,11 +47,8 @@
     success = [fileManager fileExistsAtPath:databasePath];
     
     if(!success){
-        NSLog(@"Database not there. Install it");
         NSString *databasePathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:databaseName];
         [fileManager copyItemAtPath:databasePathFromApp toPath:databasePath error:nil];
-    }else{
-        NSLog(@"Dataabse in place.");
     }
     
     databaseName = nil;

@@ -25,6 +25,8 @@
 }
 
 -(void)cancel:(id)sender{
+    commentText.text = @"";
+    comment = nil;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -33,7 +35,6 @@
 - (void)save:(id)sender{
     
     self.comment = self.commentText.text;
-    NSLog(@"Add result comment %@", self.comment);
     if(self.resultId>0){
         ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
         [dataSource saveResultComment :self.comment :self.resultId];
@@ -44,6 +45,7 @@
 
 - (void)deleteComment:(id)sender{
     self.comment = nil;
+    self.commentText.text = @"";
     if(resultId>0){
         ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
         [dataSource deleteResultComment:resultId];
@@ -79,7 +81,6 @@
         self.comment = [dataSource getResultComment:self.resultId];
     }
     
-    NSLog(@"Result comment loaded %@", self.comment);
     self.commentText.text = self.comment;
     
     // Make a border around the comment text area.

@@ -11,11 +11,13 @@
 @interface ITISign : NSObject
 
 @property (nonatomic, assign) int id;
-@property (nonatomic, copy) NSString *header;
-@property (nonatomic, copy) NSString *body;
-@property (nonatomic, copy) UIImage *image;
-@property (nonatomic, copy) UIImage *thumb;
-@property (nonatomic, copy) NSString *level;
-@property (nonatomic, copy) NSString *organisation;
+@property (nonatomic, retain) NSString *header;
+@property (nonatomic, retain) NSString *body;
+@property (nonatomic, assign) int imageStart;
+@property (nonatomic, retain) NSString *thumb;
+@property (nonatomic, retain) NSString *level;
+@property (nonatomic, retain) NSString *organisation;
+@property (nonatomic, assign) int imageOrderId;
+@property (nonatomic, retain) NSString *signFile;
 
 @end

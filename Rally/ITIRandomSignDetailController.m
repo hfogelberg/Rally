@@ -11,6 +11,7 @@
 @implementation ITIRandomSignDetailController
 @synthesize imageView;
 @synthesize sign;
+@synthesize imageScroll;
 
 // Move to the next sign when Next is tapped
 - (void) getNext:(id)sender{
@@ -43,24 +44,28 @@
     [super viewDidLoad];
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
     self.view.backgroundColor = background;
-
-    [self displaySign];
-}
+    
+    self.imageScroll.contentSize = CGSizeMake(320, 10000);
+    self.imageScroll.layer.masksToBounds = YES;
+    self.imageScroll.layer.cornerRadius = 5.0;
+    
+    [self displaySign];}
 
 - (void) displaySign
 {
     ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];    
     self.sign = [dataSource getRandomSign];   
-    self.imageView.image = self.sign.image;
-    self.imageView.layer.masksToBounds = YES;
-    self.imageView.layer.cornerRadius = 5.0;
+    self.imageView.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.sign.signFile ofType:nil]];
+    self.navigationItem.title = self.sign.level;
+    int imageStart = (self.sign.imageOrderId * 220) - 220;
+    
+    CGPoint offSet = CGPointMake(0, imageStart);
+    [imageScroll setContentOffset:offSet];   
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    self.imageView = nil;
-    self.sign = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
