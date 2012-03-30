@@ -26,7 +26,6 @@
 
 -(void)cancel:(id)sender{
     commentText.text = @"";
-    comment = nil;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -44,14 +43,27 @@
 }
 
 - (void)deleteComment:(id)sender{
-    self.comment = nil;
-    self.commentText.text = @"";
-    if(resultId>0){
-        ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
-        [dataSource deleteResultComment:resultId];
-    }
-    [self dismissViewControllerAnimated:YES completion:nil];
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"DROP_COMMENT_HEADER", nil)
+                                                      message:NSLocalizedString(@"DROP_COMMENT", nil)
+                                                     delegate:self
+                                            cancelButtonTitle:NSLocalizedString(@"NO", nil)
+                                            otherButtonTitles:NSLocalizedString(@"YES", nil), nil];
+    [message show];
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if([alertView buttonTitleAtIndex:buttonIndex]==NSLocalizedString(@"YES", nil))
+    {
+        self.comment = nil;
+        self.commentText.text = @"";
+        if(resultId>0){
+            ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
+            [dataSource deleteResultComment:resultId];
+        }
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

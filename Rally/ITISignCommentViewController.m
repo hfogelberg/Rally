@@ -90,6 +90,7 @@
         newComment.body = commentText.text;
         [dataSource createSignComment:newComment];
     }else{
+        comment.body = commentText.text;
         [dataSource updateSignComment:comment];
     }
     [self dismissModalViewControllerAnimated:YES];
@@ -97,10 +98,22 @@
 
 - (void)deleteComment:(id)sender{
     
-    ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
-    [dataSource deleteSignComment:comment.id];
-    
-    [self dismissModalViewControllerAnimated:YES];
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"DROP_COMMENT_HEADER", nil)
+                                                      message:NSLocalizedString(@"DROP_COMMENT", nil)
+                                                     delegate:self
+                                            cancelButtonTitle:NSLocalizedString(@"NO", nil)
+                                            otherButtonTitles:NSLocalizedString(@"YES", nil), nil];
+    [message show];
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{ 
+    if([alertView buttonTitleAtIndex:buttonIndex]==NSLocalizedString(@"YES", nil))
+    {
+        ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
+        [dataSource deleteSignComment:comment.id];
+        [self dismissModalViewControllerAnimated:YES]; 
+    }
+}
+
 
 @end

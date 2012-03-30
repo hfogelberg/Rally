@@ -18,6 +18,8 @@
 "DROP_DOG" = "Do you really want to delet the dog?";
 "DROP_DOG_HEADER" = "Delete dog";
 "DROP_DOG_RESULTS" = "Do you really want to delete the dog? The Rally-O results will also be removed.";
+"DROP_COMMENT_HEADER" = "Delete comment";
+"DROP_COMMENT" = "Do you want to delete the comment?";
 "DROP_RESULT_HEADER" = "Delete results";
 "DROP_RESULT" = "Do you really want to delete the result?";
 "EVENT_NAME" = "Event";
@@ -37,7 +39,7 @@
 "RESULT" = "Result";
 "RESULTS" = "Results";
 "SETTINGS" = "Settings";
-"SETTINGS_MESSAGE" = "Choose organization and level in Settings";
+"SETTINGS_MESSAGE" = "Choose level in Settings";
 "SIGNS" = "Signs";
 "TRAINING" = "Training";
 "YES" = "Yes";

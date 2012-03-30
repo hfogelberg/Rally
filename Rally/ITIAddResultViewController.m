@@ -233,7 +233,8 @@
     
     if(commentView != Nil){
         if(commentView.comment != Nil)
-        {    result.comment = commentView.comment;
+        {    
+            result.comment = commentView.comment;
             hasComment = TRUE;
         }
     }

@@ -105,7 +105,7 @@
              settings.organisation = [[NSString alloc] initWithUTF8String:(const char *)sqlite3_column_text(sqlStatement, 0)];
              settings.levelCode = sqlite3_column_int(sqlStatement, 1);
              settings.isFirstRun = sqlite3_column_int(sqlStatement, 2);      
-             settings.version = sqlite3_column_int(sqlStatement, 3);
+             //settings.version = sqlite3_column_decltype(sqlStatement, 3);
             }
          }
          

@@ -15,11 +15,13 @@
 "DOB" = "Född";
 "DATE" = "Datum";
 "DOGS" = "Hundar";
+"DROP_COMMENT_HEADER" = "Släng anteckning";
+"DROP_COMMENT" = "Vill du radera anteckningen?";
 "DROP_DOG" = "Vill du verkligen ta bort hunden? ";
 "DROP_DOG_HEADER" = "Ta bort hund";
-"DROP_DOG_RESULTS" = "Vill du verkligen ta bort hunden? Resultaten kommer också att tas bort";
+"DROP_DOG_RESULTS" = "Vill du verkligen ta bort hunden? Resultaten kommer också att tas bort.";
 "DROP_RESULT_HEADER" = "Ta bort resultat";
-"DROP_RESULT" = "Vill du verkligen ta bort resultatet";
+"DROP_RESULT" = "Vill du verkligen ta bort resultatet?";
 "EVENT_NAME" = "Tävling";
 "FEMALE" = "Tik";
 "HEIGHT" = "Mankhöjd";
@@ -37,7 +39,7 @@
 "RESULT" = "Resultat";
 "RESULTS" = "Resultat";
 "SETTINGS" = "Inställningar";
-"SETTINGS_MESSAGE" = "Välj organisation och nivå under inställningar";
+"SETTINGS_MESSAGE" = "Välj nivå under inställningar.";
 "SIGNS" = "Skyltar";
 "TRAINING" = "Träning";
 "YES" = "Ja";

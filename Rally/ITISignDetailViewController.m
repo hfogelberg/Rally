@@ -18,7 +18,7 @@
 @synthesize signs;
 @synthesize signId;
 @synthesize imageScroll;
-
+@synthesize disableSwipe;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -73,21 +73,23 @@
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
     self.view.backgroundColor = background;
     
-    UISwipeGestureRecognizer *swipeRecognizer;
-    
-    swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeDetectedLeft:)];
-    swipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
-    [self.view addGestureRecognizer:swipeRecognizer];
-
-    swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeDetectedRight:)];
-    swipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
-    [self.view addGestureRecognizer:swipeRecognizer];
-    
     self.imageView.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.sign.signFile ofType:nil]];
     
     self.imageScroll.contentSize = CGSizeMake(320, 10000);
     self.imageScroll.layer.masksToBounds = YES;
     self.imageScroll.layer.cornerRadius = 5.0;
+    
+    if(disableSwipe == FALSE){
+        UISwipeGestureRecognizer *swipeRecognizer;
+    
+        swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeDetectedLeft:)];
+        swipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+        [self.view addGestureRecognizer:swipeRecognizer];
+
+        swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeDetectedRight:)];
+        swipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+        [self.view addGestureRecognizer:swipeRecognizer];
+    }
     
    [self displaySign];
 }

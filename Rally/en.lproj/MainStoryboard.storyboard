@@ -72,7 +72,7 @@
                                 </subviews>
                             </scrollView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="kHN-P0-3tO">
-                                <rect key="frame" x="0.0" y="236" width="320" height="220"/>
+                                <rect key="frame" x="0.0" y="236" width="320" height="133"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -108,7 +108,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="BBU-Vu-Rlo">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" id="BBU-Vu-Rlo">
                                 <rect key="frame" x="0.0" y="10" width="320" height="220"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
@@ -1237,7 +1237,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <action selector="saveComment:" destination="6mH-X2-cpZ" id="KNR-ec-y75"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem systemItem="done" id="set-C9-5Gy">
+                                    <barButtonItem systemItem="cancel" id="set-C9-5Gy">
                                         <connections>
                                             <action selector="closeDialog:" destination="6mH-X2-cpZ" id="PeE-G9-AFN"/>
                                         </connections>
@@ -1642,9 +1642,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="QGg-Zm-D5P"/>
-        <segue reference="vFY-zg-FSk"/>
         <segue reference="jSM-Co-WUv"/>
         <segue reference="RzE-ON-JCY"/>
+        <segue reference="ua3-DB-SCh"/>
         <segue reference="hX7-Un-grM"/>
         <segue reference="9UD-zp-lBC"/>
     </inferredMetricsTieBreakers>

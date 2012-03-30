@@ -78,6 +78,7 @@
     if ([[segue identifier] isEqualToString:@"showSignDetailSegue"]) {
         ITISignDetailViewController *detailViewController = [segue destinationViewController];
         detailViewController.sign = sign;
+        detailViewController.disableSwipe = TRUE;
     }
 }
 

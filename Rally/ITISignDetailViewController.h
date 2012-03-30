@@ -24,6 +24,7 @@
 @property (nonatomic, retain) NSMutableArray *signs;
 @property (nonatomic, assign) int signId;
 @property (nonatomic, retain) IBOutlet UIScrollView *imageScroll;
+@property (nonatomic, assign) BOOL disableSwipe;
 
 - (void) displaySign;
 - (void) getSignComment;
