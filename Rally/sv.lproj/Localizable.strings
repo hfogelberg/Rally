@@ -25,6 +25,8 @@
 "EVENT_NAME" = "Tävling";
 "FEMALE" = "Tik";
 "HEIGHT" = "Mankhöjd";
+"INFO" = "Information";
+"INFO_TEXT" = "Skyltarna är hämtade från Svenska Brukshundklubben och används med deras tillstånd. Skyltarna finns att ladda hem på www.brukshundklubben.se. \n\nDu kan även läsa mer om rallylydnad där.\n\nOm du har synpunkter på eller frågor om RallyDog kan du kontakta oss på info@itio.se.";
 "LEVEL" = "Nivå";
 "LOCATION" = "Ort";
 "MALE" = "Hane";

@@ -25,6 +25,8 @@
 "EVENT_NAME" = "Event";
 "FEMALE" = "Female";
 "HEIGHT" = "Height";
+"INFO" = "Information";
+"INFO_TEXT" = "The signs are used by kind permission from the Swedish Working Dog Association and are available for download from http://www.brukshundklubben.se.\n\nIf you have any questions or opinions about RallyDog please contact us at info@itio.se.";
 "LEVEL" = "Level";
 "LOCATION" = "Location";
 "MALE" = "Male";

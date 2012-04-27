@@ -61,6 +61,7 @@
 - (ITISettings *) getSettingsOverview;
 - (void) updateOrganisation: (NSString *) org;
 - (void) setFirstRunToNo;
+- (void) updateVersionTo101;
 
 // Levels
 - (void) updateLevels: (int) level;

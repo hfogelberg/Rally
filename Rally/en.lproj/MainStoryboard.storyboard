@@ -825,10 +825,46 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <segue destination="XwF-p1-5KW" kind="relationship" relationship="viewControllers" id="1Td-Qo-Q5m"/>
                         <segue destination="cjN-Nr-Bwz" kind="relationship" relationship="viewControllers" id="MOe-tB-7pK"/>
                         <segue destination="bg8-93-f3c" kind="relationship" relationship="viewControllers" id="R9U-QN-Bdh"/>
+                        <segue destination="68C-xV-ngJ" kind="relationship" relationship="viewControllers" id="chb-a1-BFA"/>
                     </connections>
                 </tabBarController>
             </objects>
             <point key="canvasLocation" x="-1591" y="1591"/>
+        </scene>
+        <scene sceneID="JN3-XV-5qA">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8QQ-j5-Zz5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="68C-xV-ngJ" customClass="ITIInfoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TY3-KA-18A">
+                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="OlO-ZF-AR0">
+                                <rect key="frame" x="14" y="120" width="293" height="244"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" minimumFontSize="10" id="jPZ-Lf-RZh">
+                                <rect key="frame" x="20" y="35" width="280" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Information" image="14-tag.png" id="H9g-52-4mq"/>
+                    <connections>
+                        <outlet property="infoLabel" destination="jPZ-Lf-RZh" id="UhO-Ik-wWF"/>
+                        <outlet property="infoText" destination="OlO-ZF-AR0" id="VG5-G5-5PA"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-1159" y="2384"/>
         </scene>
         <scene sceneID="JeS-dM-E0n">
             <objects>
@@ -1452,6 +1488,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="05-shuffle.png" width="28" height="20"/>
         <image name="128-bone.png" width="30" height="13"/>
         <image name="139-flags.png" width="42" height="21"/>
+        <image name="14-tag.png" width="22" height="22"/>
         <image name="20-gear2.png" width="26" height="28"/>
         <image name="82-dog-paw.png" width="24" height="24"/>
         <image name="can.png" width="60" height="70"/>
@@ -1556,6 +1593,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="placeText" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="pointsText" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="positionText" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ITIInfoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ITIInfoViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="infoLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="infoText" candidateClass="UITextView"/>
             </relationships>
         </class>
         <class className="ITILevelSettingsViewController" superclassName="UIViewController">

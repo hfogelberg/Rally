@@ -17,7 +17,26 @@
 {
     [self copyDatabase];
     [self setRallyDb];
+    [self checkVersion];
+    
     return YES;
+}
+
+- (void)checkVersion{
+    ITISettings *settings;
+    ITISignsDataSource *dataSource = [[ITISignsDataSource alloc] init];
+    settings = dataSource.getSettingsOverview;
+    NSString *version = [NSString stringWithFormat: @"%d", settings.version];
+    
+    if(version == @"1.01"){
+        [self updateDbTo101];
+    }
+    
+}
+
+// Fix 
+- (void)updateDbTo101{
+    
 }
 
 - (void) setRallyDb{

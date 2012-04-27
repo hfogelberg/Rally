@@ -24,6 +24,8 @@
 		5772F77815063F9C00CF2FCA /* questionmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 5772F77615063F9C00CF2FCA /* questionmark.png */; };
 		5772F78915064C4100CF2FCA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5772F78B15064C4100CF2FCA /* Localizable.strings */; };
 		5772F79515064DF400CF2FCA /* ITIAddResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5772F79415064DF400CF2FCA /* ITIAddResultViewController.m */; };
+		57934E6A154558C50080B53B /* 14-tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 57934E69154558C50080B53B /* 14-tag.png */; };
+		57934E7115455C260080B53B /* ITIInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57934E7015455C260080B53B /* ITIInfoViewController.m */; };
 		57B277E114E92EA4006FA5E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57B277E014E92EA4006FA5E4 /* UIKit.framework */; };
 		57B277E314E92EA4006FA5E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57B277E214E92EA4006FA5E4 /* Foundation.framework */; };
 		57B277E514E92EA4006FA5E4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57B277E414E92EA4006FA5E4 /* CoreGraphics.framework */; };
@@ -174,6 +176,9 @@
 		5772F78A15064C4100CF2FCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5772F78F15064C6000CF2FCA /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5772F79415064DF400CF2FCA /* ITIAddResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITIAddResultViewController.m; sourceTree = "<group>"; };
+		57934E69154558C50080B53B /* 14-tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "14-tag.png"; sourceTree = "<group>"; };
+		57934E6F15455C260080B53B /* ITIInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITIInfoViewController.h; sourceTree = "<group>"; };
+		57934E7015455C260080B53B /* ITIInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITIInfoViewController.m; sourceTree = "<group>"; };
 		57B277DC14E92EA4006FA5E4 /* Rally.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rally.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57B277E014E92EA4006FA5E4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		57B277E214E92EA4006FA5E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -472,6 +477,8 @@
 				57F58E431500D4010009EB29 /* ITISignCommentViewController.m */,
 				57B2781A14E93924006FA5E4 /* ITISignsViewController.h */,
 				57B2781B14E93924006FA5E4 /* ITISignsViewController.m */,
+				57934E6F15455C260080B53B /* ITIInfoViewController.h */,
+				57934E7015455C260080B53B /* ITIInfoViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -479,6 +486,7 @@
 		57B2784314E93B17006FA5E4 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				57934E69154558C50080B53B /* 14-tag.png */,
 				5772F77515063F9C00CF2FCA /* next.png */,
 				5772F77615063F9C00CF2FCA /* questionmark.png */,
 				5772F76F1506372000CF2FCA /* toolnote.png */,
@@ -793,6 +801,7 @@
 				57F6121D152337AA0068A477 /* Localizable.strings in Resources */,
 				57F6121E152337AA0068A477 /* MainStoryboard.storyboard in Resources */,
 				57F6121F152337AA0068A477 /* Localizable.strings in Resources */,
+				57934E6A154558C50080B53B /* 14-tag.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -830,6 +839,7 @@
 				57F58E441500D4020009EB29 /* ITISignCommentViewController.m in Sources */,
 				5772F79515064DF400CF2FCA /* ITIAddResultViewController.m in Sources */,
 				57477B02151347E200830F02 /* ITIImageStore.m in Sources */,
+				57934E7115455C260080B53B /* ITIInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -906,8 +916,8 @@
 					armv6,
 				);
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Itio Systems AB";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Itio Systems AB";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -915,6 +925,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				New_Setting = "";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "D0566E79-2A73-4FE2-9FFF-282AD0EFF933";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D0566E79-2A73-4FE2-9FFF-282AD0EFF933";
@@ -927,11 +938,13 @@
 		57A5AFC11525BBA2004AC7C9 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Itio Systems AB";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rally/Rally-Prefix.pch";
 				INFOPLIST_FILE = "Rally/Rally-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D0566E79-2A73-4FE2-9FFF-282AD0EFF933";
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -948,8 +961,8 @@
 					armv6,
 				);
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Itio Systems AB";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Itio Systems AB";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -964,6 +977,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				New_Setting = "";
 				PROVISIONING_PROFILE = "D0566E79-2A73-4FE2-9FFF-282AD0EFF933";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D0566E79-2A73-4FE2-9FFF-282AD0EFF933";
 				SDKROOT = iphoneos;
@@ -980,8 +994,8 @@
 					armv6,
 				);
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Itio Systems AB";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Itio Systems AB";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -989,6 +1003,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				New_Setting = "";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "D0566E79-2A73-4FE2-9FFF-282AD0EFF933";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D0566E79-2A73-4FE2-9FFF-282AD0EFF933";
@@ -1001,10 +1016,12 @@
 		57B277FB14E92EA4006FA5E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rally/Rally-Prefix.pch";
 				INFOPLIST_FILE = "Rally/Rally-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -1014,10 +1031,12 @@
 		57B277FC14E92EA4006FA5E4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rally/Rally-Prefix.pch";
 				INFOPLIST_FILE = "Rally/Rally-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

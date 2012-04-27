@@ -126,6 +126,10 @@
     [self update:updateSql];
 }
 
+- (void)updateVersionTo101{
+   
+}
+
 
 // Signs
 - (ITISign *)getNextSign:(int)currentSign{
