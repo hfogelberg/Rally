@@ -916,8 +916,8 @@
 					armv6,
 				);
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Itio Systems AB";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Itio Systems AB";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -927,8 +927,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				New_Setting = "";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "D0566E79-2A73-4FE2-9FFF-282AD0EFF933";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D0566E79-2A73-4FE2-9FFF-282AD0EFF933";
+				PROVISIONING_PROFILE = "C24A75D0-DBDB-4F66-9455-CD09B6FD1771";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C24A75D0-DBDB-4F66-9455-CD09B6FD1771";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = YES;
@@ -938,14 +938,14 @@
 		57A5AFC11525BBA2004AC7C9 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rally/Rally-Prefix.pch";
 				INFOPLIST_FILE = "Rally/Rally-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D0566E79-2A73-4FE2-9FFF-282AD0EFF933";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -961,8 +961,8 @@
 					armv6,
 				);
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Itio Systems AB";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Itio Systems AB";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -978,8 +978,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				New_Setting = "";
-				PROVISIONING_PROFILE = "D0566E79-2A73-4FE2-9FFF-282AD0EFF933";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D0566E79-2A73-4FE2-9FFF-282AD0EFF933";
+				PROVISIONING_PROFILE = "C24A75D0-DBDB-4F66-9455-CD09B6FD1771";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C24A75D0-DBDB-4F66-9455-CD09B6FD1771";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
@@ -994,8 +994,8 @@
 					armv6,
 				);
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Itio Systems AB";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Itio Systems AB";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1005,8 +1005,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				New_Setting = "";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "D0566E79-2A73-4FE2-9FFF-282AD0EFF933";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D0566E79-2A73-4FE2-9FFF-282AD0EFF933";
+				PROVISIONING_PROFILE = "C24A75D0-DBDB-4F66-9455-CD09B6FD1771";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C24A75D0-DBDB-4F66-9455-CD09B6FD1771";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = NO;
@@ -1016,7 +1016,7 @@
 		57B277FB14E92EA4006FA5E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rally/Rally-Prefix.pch";
 				INFOPLIST_FILE = "Rally/Rally-Info.plist";
@@ -1031,7 +1031,7 @@
 		57B277FC14E92EA4006FA5E4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rally/Rally-Prefix.pch";
 				INFOPLIST_FILE = "Rally/Rally-Info.plist";
